@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Rectangle.o \
 	${OBJECTDIR}/src/devicePlot.o \
 	${OBJECTDIR}/src/main.o \
+	${OBJECTDIR}/src/painter.o \
 	${OBJECTDIR}/src/plotObjects.o \
 	${OBJECTDIR}/src/plotPoint.o
 
@@ -98,6 +99,11 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+
+${OBJECTDIR}/src/painter.o: src/painter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
 
 ${OBJECTDIR}/src/plotObjects.o: src/plotObjects.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

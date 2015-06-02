@@ -5,11 +5,17 @@
  * Created on 2 Июнь 2015 г., 23:56
  */
 
+
+
 #ifndef DEVICEPLOT_H
 #define	DEVICEPLOT_H
 
+
+
 class devicePlot {
 public:
+    devicePlot(){M=N=0;};
+    
 		devicePlot(int m,int n):M(m),N(n)
 		{
 			array=new char *[m];
@@ -35,8 +41,10 @@ public:
 		  
 		}
 	virtual	void print(void);
-    virtual	void fill(int,int,int,int, char);
-	
+        virtual	void fill(int,int,int,int, char);
+                
+        
+            
              char **array;
 	private:
 		int M;

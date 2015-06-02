@@ -10,6 +10,7 @@
 #include "devicePlot.h"
 #include "plotPoint.h"
 #include "Line.h"
+#include "painter.h"
 
 using namespace std;
 
@@ -18,6 +19,13 @@ using namespace std;
  */
 int main(int argc, char** argv) {
         devicePlot hdc(35,35);
+        
+        painter canvas;
+        canvas.setHDC( hdc);
+        
+        
+        
+        
 	  //Circle a(15,15,7);
 	//Rectangle r(1,1,1,10);
 	//Ellipse e(0,5,25,20);
@@ -112,6 +120,10 @@ int main(int argc, char** argv) {
 	plotPoint ww1(23,8);ww1.show(hdc);ww1.fill(hdc,'"');
 	plotPoint ggg(24,8);ggg.show(hdc);ggg.fill(hdc,'"');
 	plotPoint c18(25,8);c18.show(hdc);c18.fill(hdc,'"');
+        
+        
+        canvas.paint( new Line(0,0,30,15) );
+        
 	hdc.print();
 	//b.print();
 	return 0;
