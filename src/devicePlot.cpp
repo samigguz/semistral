@@ -4,8 +4,11 @@
  * 
  * Created on 2 Июнь 2015 г., 23:56
  */
-
+#include <iostream>
 #include "devicePlot.h"
+
+using namespace std;
+
 void devicePlot::fill(int x1,int x2, int y1,int y2, char znak)
 
 {
