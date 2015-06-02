@@ -1,11 +1,12 @@
 /* 
  * File:   main.cpp
- * Author: andrew
+ * Author: 
  *
- * Created on 2 Июнь 2015 г., 23:37
+ * Created on 3 Июнь 2015 г., 0:11
  */
 
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
@@ -13,10 +14,7 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
- 
-    
-    
-    
+    cout << "HEllo" << endl;
     return 0;
 }
 

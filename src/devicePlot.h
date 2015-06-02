@@ -1,6 +1,6 @@
 /* 
  * File:   devicePlot.h
- * Author: andrew
+ * Author: 
  *
  * Created on 2 Июнь 2015 г., 23:56
  */
@@ -10,10 +10,39 @@
 
 class devicePlot {
 public:
-    devicePlot();
-    devicePlot(const devicePlot& orig);
-    virtual ~devicePlot();
-private:
+		devicePlot(int m,int n):M(m),N(n)
+		{
+			array=new char *[m];
+
+	           for (int i = 0; i < m; i++)
+                    array[i] = new char [n];
+                    for(int i=0;i<m;i++)
+	              for (int j=0;j<n;j++)
+	                {
+	                  array[i][j]=' ';
+	                }
+			
+		}
+		
+		void putPixel(int X, int Y) { putPixel(X,Y,'*'); }
+		
+		void putPixel(int X, int Y, char znak) {
+		  
+		  if (  X >=0 && X < N && Y>=0 && Y<M )
+		  { 
+		    array[Y][X]=znak;
+		  }  
+		  
+		}
+	virtual	void print(void);
+    virtual	void fill(int,int,int,int, char);
+	
+             char **array;
+	private:
+		int M;
+		int N;
+		
+	 	
 
 };
 
