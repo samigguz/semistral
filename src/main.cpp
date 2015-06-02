@@ -102,11 +102,6 @@ int main(int argc, char** argv) {
 	Line y22(7,14,20,14);y22.show(hdc);
     Line z22(8,13,18,13);z22.show(hdc);
     Line q22(9,12,16,12);q22.show(hdc);
-	/*Line w2(29,25,31,25);w2.show(hdc);
-	Line e3(30,26,31,26);e3.show(hdc);
-	Line r3(23,19,27,19);r3.show(hdc);
-	Line t3(3,20,9,20);t3.show(hdc);
-	Line u3(15,20,19,20);u3.show(hdc);*/
 	
 	plotPoint c3(19,12);c3.show(hdc);c3.fill(hdc,'@');
 	plotPoint c4(20,12);c4.show(hdc);c4.fill(hdc,'.');
@@ -122,7 +117,7 @@ int main(int argc, char** argv) {
 	plotPoint c18(25,8);c18.show(hdc);c18.fill(hdc,'"');
         
         
-        canvas.paint( new Line(0,0,30,15) );
+        canvas.paint( new Line(0,0,10,10) );
         
 	hdc.print();
 	//b.print();
