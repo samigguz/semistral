@@ -21,8 +21,8 @@ public:
     {
     	hdc.putPixel(X,Y);
     }
-    void fill( devicePlot hdc,char ){
-	
+    void fill( devicePlot hdc,char znak ){
+	   hdc.putPixel(X,Y,znak);
 	};
     virtual ~plotPoint();    
 };

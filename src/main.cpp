@@ -21,14 +21,14 @@ int main(int argc, char** argv) {
 	  //Circle a(15,15,7);
 	//Rectangle r(1,1,1,10);
 	//Ellipse e(0,5,25,20);
-	plotPoint a(19,1);a.show(hdc);
+		plotPoint a(19,1);a.show(hdc);a.fill(hdc,'|');
 	plotPoint b(3,12);b.show(hdc);
-	plotPoint c(30,1);c.show(hdc);
-	plotPoint c2(3,11);c2.show(hdc);
+	plotPoint c(30,1);c.show(hdc);c.fill(hdc,'|');
+	plotPoint c2(3,11);c2.show(hdc);c2.fill(hdc,'@');
 	
 	
 	Line x(18,2,20,2);x.show(hdc);
-	Line y(18,3,21,3);y.show(hdc);
+	Line y(17,3,21,3);y.show(hdc);
     Line z(18,4,21,4);z.show(hdc);
     Line q(29,2,31,2);q.show(hdc);
 	Line w(28,3,32,3);w.show(hdc);
@@ -100,8 +100,18 @@ int main(int argc, char** argv) {
 	Line t3(3,20,9,20);t3.show(hdc);
 	Line u3(15,20,19,20);u3.show(hdc);*/
 	
+	plotPoint c3(19,12);c3.show(hdc);c3.fill(hdc,'@');
+	plotPoint c4(20,12);c4.show(hdc);c4.fill(hdc,'.');
+	plotPoint c5(21,12);c5.show(hdc);c5.fill(hdc,'.');
+	plotPoint c6(22,12);c6.show(hdc);c6.fill(hdc,')');
+	plotPoint c7(23,9);c7.show(hdc);c7.fill(hdc,'(');
+	plotPoint c8(25,9);c8.show(hdc);c8.fill(hdc,')');
 	
+	plotPoint ca(24,9);ca.show(hdc);ca.fill(hdc,'.');
 	
+	plotPoint ww1(23,8);ww1.show(hdc);ww1.fill(hdc,'"');
+	plotPoint ggg(24,8);ggg.show(hdc);ggg.fill(hdc,'"');
+	plotPoint c18(25,8);c18.show(hdc);c18.fill(hdc,'"');
 	hdc.print();
 	//b.print();
 	return 0;
