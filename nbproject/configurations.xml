@@ -4,11 +4,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Исходные файлы"
                    projectFiles="true">
+      <itemPath>src/devicePlot.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Файлы заголовков"
                    projectFiles="true">
+      <itemPath>src/devicePlot.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Файлы ресурсов"
@@ -38,6 +40,10 @@
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/devicePlot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/devicePlot.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -60,6 +66,10 @@
         </asmTool>
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/devicePlot.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/devicePlot.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
