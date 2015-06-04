@@ -9,8 +9,11 @@
       <itemPath>src/Line.cpp</itemPath>
       <itemPath>src/Rectangle.cpp</itemPath>
       <itemPath>src/devicePlot.cpp</itemPath>
+      <itemPath>example1.guz</itemPath>
+      <itemPath>src/interpretator.cpp</itemPath>
       <itemPath>src/main.cpp</itemPath>
       <itemPath>src/painter.cpp</itemPath>
+      <itemPath>src/parser.cpp</itemPath>
       <itemPath>src/plotObjects.cpp</itemPath>
       <itemPath>src/plotPoint.cpp</itemPath>
     </logicalFolder>
@@ -22,7 +25,9 @@
       <itemPath>src/Line.h</itemPath>
       <itemPath>src/Rectangle.h</itemPath>
       <itemPath>src/devicePlot.h</itemPath>
+      <itemPath>src/interpretator.h</itemPath>
       <itemPath>src/painter.h</itemPath>
+      <itemPath>src/parser.h</itemPath>
       <itemPath>src/plotObjects.h</itemPath>
       <itemPath>src/plotPoint.h</itemPath>
     </logicalFolder>
@@ -52,6 +57,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="example1.guz" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Circle.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Circle.h" ex="false" tool="3" flavor2="0">
@@ -72,11 +79,19 @@
       </item>
       <item path="src/devicePlot.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/interpretator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/interpretator.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/painter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/parser.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/plotObjects.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -107,6 +122,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="example1.guz" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/Circle.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/Circle.h" ex="false" tool="3" flavor2="0">
@@ -127,11 +144,19 @@
       </item>
       <item path="src/devicePlot.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/interpretator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/interpretator.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/painter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/parser.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/plotObjects.cpp" ex="false" tool="1" flavor2="0">
       </item>

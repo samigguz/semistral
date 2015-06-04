@@ -6,6 +6,7 @@
  */
 
 #include "painter.h"
+#include "Line.h"
 
 painter::painter() {
     
@@ -16,6 +17,7 @@ void painter::setHDC( devicePlot &h) {
 }
 
 void painter::paint(plotObjects* a) {
+   
    a->show(hdc); 
 }
 

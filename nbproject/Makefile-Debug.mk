@@ -40,8 +40,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Line.o \
 	${OBJECTDIR}/src/Rectangle.o \
 	${OBJECTDIR}/src/devicePlot.o \
+	${OBJECTDIR}/src/interpretator.o \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/painter.o \
+	${OBJECTDIR}/src/parser.o \
 	${OBJECTDIR}/src/plotObjects.o \
 	${OBJECTDIR}/src/plotPoint.o
 
@@ -95,6 +97,11 @@ ${OBJECTDIR}/src/devicePlot.o: src/devicePlot.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/devicePlot.o src/devicePlot.cpp
 
+${OBJECTDIR}/src/interpretator.o: src/interpretator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/interpretator.o src/interpretator.cpp
+
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
@@ -104,6 +111,11 @@ ${OBJECTDIR}/src/painter.o: src/painter.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
+
+${OBJECTDIR}/src/parser.o: src/parser.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/parser.o src/parser.cpp
 
 ${OBJECTDIR}/src/plotObjects.o: src/plotObjects.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

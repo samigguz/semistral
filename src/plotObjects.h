@@ -8,7 +8,9 @@
 #ifndef PLOTOBJECTS_H
 #define	PLOTOBJECTS_H
 
+#include <iostream>
 #include "devicePlot.h"
+
 
 class plotObjects {
 public:
@@ -16,8 +18,8 @@ public:
     plotObjects(const plotObjects& orig);
     virtual ~plotObjects();
     
-    void show( devicePlot hdc ){};
-    void fill( devicePlot hdc,char ){};
+    virtual void show( devicePlot hdc ){std::cout << 1 << std::endl;};
+    virtual void fill( devicePlot hdc,char ){};
     
 private:
 

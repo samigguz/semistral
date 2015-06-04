@@ -7,10 +7,12 @@
 
 #include <cstdlib>
 #include <iostream>
+
 #include "devicePlot.h"
 #include "plotPoint.h"
 #include "Line.h"
 #include "painter.h"
+#include "interpretator.h"
 
 using namespace std;
 
@@ -18,8 +20,13 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-        devicePlot hdc(35,35);
-        
+    
+    interpretator mainInterpretator("examples/example1.guz","example1.out");
+    
+    mainInterpretator.doIt();
+    
+        //devicePlot hdc(35,35);
+     /*   
         painter canvas;
         canvas.setHDC( hdc);
         
@@ -118,8 +125,8 @@ int main(int argc, char** argv) {
         
         
         canvas.paint( new Line(0,0,10,10) );
-        
-	hdc.print();
+        */
+	//hdc.print();
 	//b.print();
 	return 0;
 }

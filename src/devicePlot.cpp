@@ -49,3 +49,9 @@ void devicePlot::print(void)
 	
 }
 
+void devicePlot::printInfo()
+{
+  cout << "info " << M << "  " << N << endl;	
+     	
+	
+}

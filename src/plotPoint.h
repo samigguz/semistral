@@ -17,7 +17,7 @@ protected:
 public:
     plotPoint( int X, int Y):X(X),Y(Y){};
     
-    void show(devicePlot hdc )
+    virtual void show(devicePlot hdc )
     {
     	hdc.putPixel(X,Y);
     }

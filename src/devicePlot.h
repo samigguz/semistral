@@ -43,7 +43,7 @@ public:
 	virtual	void print(void);
         virtual	void fill(int,int,int,int, char);
                 
-        
+        void printInfo();
             
              char **array;
 	private:
