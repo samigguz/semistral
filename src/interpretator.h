@@ -28,8 +28,11 @@ public:
     
     devicePlot* set_devicePlot( vector<string> );
     
+    
     void set_Line( devicePlot*, vector<string> );
     void set_Rectangle( devicePlot*, vector<string> );
+    void set_Point(devicePlot*, vector<string>);
+    void set_Ellipse(devicePlot*, vector<string>);
     
     virtual ~interpretator();
 private:

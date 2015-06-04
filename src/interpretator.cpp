@@ -68,8 +68,10 @@ void interpretator::doIt() {
       }  else {
        
         if ( tokens[0] == "Line") set_Line( hdc, tokens);
-        if ( tokens[0] == "Rectangle") set_Rectangle( hdc, tokens);
-          
+        if ( tokens[0] == "Rectangle" ||tokens[0] == "Square" ) set_Rectangle( hdc, tokens);
+        
+        if ( tokens[0] == "Point") set_Point( hdc, tokens);
+        if ( tokens[0] == "Ellipse" || tokens[0] == "Circle" ) set_Point( hdc, tokens);
       } 
       
       
@@ -117,7 +119,46 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     l.show( *hdc );
     
 }
-
+void interpretator::set_Point(devicePlot* hdc, vector<string> a)
+{
+    
+    cout << "Point " << a.size() << endl;  
+    if ( a.size() != 6) {
+        cout << " Error in Point " << endl;
+        return;
+    }    
+    
+    int x1 = atoi(a[2].c_str());
+    int y1 = atoi(a[4].c_str());
+    
+   
+    
+    plotPoint l( x1, y1);
+    
+    l.show( *hdc );
+    
+    
+}
+void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
+{
+    
+    cout << "Ellipse " << a.size() << endl;  
+    if ( a.size() != 10) {
+        cout << " Error in Ellipse " << endl;
+        return;
+    }    
+    
+    int x1 = atoi(a[2].c_str());
+    int y1 = atoi(a[4].c_str());
+    int x2 = atoi(a[6].c_str());
+    int y2 = atoi(a[8].c_str());
+    
+    Ellipse l( x1,y1,x2,y2);
+    
+    l.show( *hdc );
+    
+    
+}
 void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     cout << "Rect " << a.size() << endl;  
     if ( a.size() != 10) {
