@@ -12,6 +12,8 @@
 #include "devicePlot.h"
 #include "Line.h"
 #include "Rectangle.h"
+#include "Ellipse.h"
+//#include "CCoordException.h"
 
 using namespace std;
 

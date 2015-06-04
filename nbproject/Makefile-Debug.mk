@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/CCoordException.o \
 	${OBJECTDIR}/src/Circle.o \
 	${OBJECTDIR}/src/Ellipse.o \
 	${OBJECTDIR}/src/Line.o \
@@ -71,6 +72,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/semistral.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/semistral ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/CCoordException.o: CCoordException.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CCoordException.o CCoordException.cpp
+
+${OBJECTDIR}/CCoordException.h.gch: CCoordException.h 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o "$@" CCoordException.h
 
 ${OBJECTDIR}/src/Circle.o: src/Circle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
