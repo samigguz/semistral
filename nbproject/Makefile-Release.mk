@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/CCoordException.o \
 	${OBJECTDIR}/src/Circle.o \
 	${OBJECTDIR}/src/Ellipse.o \
 	${OBJECTDIR}/src/Line.o \
@@ -71,6 +72,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ascigraph: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ascigraph ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/src/CCoordException.o: src/CCoordException.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/CCoordException.o src/CCoordException.cpp
 
 ${OBJECTDIR}/src/Circle.o: src/Circle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

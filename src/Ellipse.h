@@ -17,7 +17,7 @@ using namespace std;
 class Ellipse : public plotPoint {
 protected:
      int x1,y1,x2,y2;  
-     double a,b,e,p;
+     double a,b,e,p,c;
      int STEP;
 public:
     Ellipse(int x1,int y1, int x2,int y2 );
