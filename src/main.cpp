@@ -8,10 +8,10 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "devicePlot.h"
-#include "plotPoint.h"
-#include "Line.h"
-#include "painter.h"
+//#include "devicePlot.h"
+//#include "plotPoint.h"
+//#include "Line.h"
+//#include "painter.h"
 #include "interpretator.h"
 
 

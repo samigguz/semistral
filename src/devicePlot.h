@@ -10,6 +10,8 @@
 #ifndef DEVICEPLOT_H
 #define	DEVICEPLOT_H
 
+#include <iostream>
+using namespace std;
 
 
 class devicePlot {
@@ -30,10 +32,10 @@ public:
 			
 		}
 		
-		void putPixel(int X, int Y) { putPixel(X,Y,Pen); }
+		virtual void putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }
 		
-		void putPixel(int X, int Y, char znak) {
-		  
+		virtual void putPixel(int X, int Y, char znak) {
+                    cout << "b" << endl;
 		  if (  X >=0 && X < N && Y>=0 && Y<M )
 		  { 
 		    array[Y][X]=znak;
@@ -42,16 +44,18 @@ public:
 		}
 	virtual	void print(void);
         virtual	void fill(int,int,int,int, char);
-                
+
+        virtual void setColor(int a){Color=a;}
+        
         void printInfo();
             
              char **array;
              char Brush;
              char Pen;
-	private:
+	protected:
 		int M;
 		int N;
-               
+                int Color;
 		
 	 	
 

@@ -33,6 +33,14 @@ class Rectangle: public Line{
 	d.setCoordinates(x1,y2,x1,y1);
    }
    
+        
+   void show (devicePlot *hdc ){
+   	 Line::show(hdc);
+   	 b.show(hdc);
+   	 c.show(hdc);
+   	 d.show(hdc);
+   }     
+        
    void show (devicePlot hdc ){
    	 Line::show(hdc);
    	 b.show(hdc);

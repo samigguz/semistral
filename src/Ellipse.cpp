@@ -32,3 +32,18 @@ Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x
        
     } 
       
+void Ellipse::show (devicePlot *hdc ){
+     double step=(2*M_PI)/STEP;
+	  
+	 for (int i=0; i < STEP; i++ ) {
+	    double angle=step*i;
+	    double r = p / (1 -e* cos(angle));
+	    double dx = r*cos( angle);
+	    double dy= r*sin( angle);
+	    //cout<<"r= "<<r<<" dx= "<<dx<<" dy="<<dy<<" X="<<X+c+dx+0.45<<" Y="<<Y-dy+0.45<<endl;
+	    hdc->putPixel( int( (X-c)+dx+0.5), int(Y+dy+0.5) );
+	    
+	  }
+       
+    } 
+      

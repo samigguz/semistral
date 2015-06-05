@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Ellipse.o \
 	${OBJECTDIR}/src/Line.o \
 	${OBJECTDIR}/src/Rectangle.o \
+	${OBJECTDIR}/src/deviceColorPlot.o \
 	${OBJECTDIR}/src/devicePlot.o \
 	${OBJECTDIR}/src/interpretator.o \
 	${OBJECTDIR}/src/main.o \
@@ -97,6 +98,11 @@ ${OBJECTDIR}/src/Rectangle.o: src/Rectangle.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Rectangle.o src/Rectangle.cpp
+
+${OBJECTDIR}/src/deviceColorPlot.o: src/deviceColorPlot.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/deviceColorPlot.o src/deviceColorPlot.cpp
 
 ${OBJECTDIR}/src/devicePlot.o: src/devicePlot.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

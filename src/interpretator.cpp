@@ -14,6 +14,7 @@
 #include "Rectangle.h"
 #include "Ellipse.h"
 #include "CCoordException.h"
+#include "deviceColorPlot.h"
 
 using namespace std;
 
@@ -71,6 +72,8 @@ void interpretator::doIt() {
         
         if ( tokens[0] == "useBrush") set_Brush( hdc, tokens);
         if ( tokens[0] == "usePen") set_Pen( hdc, tokens);
+        if ( tokens[0] == "setColor") set_setColor( hdc, tokens);
+        
         if ( tokens[0] == "clearBrush") set_clearBrush( hdc, tokens);
         if ( tokens[0] == "Line") set_Line( hdc, tokens);
         if ( tokens[0] == "Rectangle" ||tokens[0] == "Square" ) set_Rectangle( hdc, tokens);
@@ -98,7 +101,7 @@ devicePlot* interpretator::set_devicePlot(vector<string> a) {
   int x = atoi(a[2].c_str());
   int y = atoi(a[4].c_str());
   set_size(x,y);
-  return new devicePlot(x,y);
+  return new deviceColorPlot(x,y);
 }
 void interpretator::set_size(int M,int N)
 {
@@ -135,6 +138,19 @@ void interpretator::set_Pen( devicePlot* hdc, vector<string> a)
     Pen=a[3][0];
     hdc->Pen=Pen;
 }
+
+void interpretator::set_setColor( devicePlot* hdc, vector<string> a)
+{
+    cout << "setColor " << a.size() << endl;  
+    if ( a.size() != 4) {
+        cout << " Error in setColor " << endl;
+        return;
+    }    
+    cout << atoi( a[2].c_str()) << endl;
+    
+    hdc->setColor( atoi( a[2].c_str()) );
+}
+
 void interpretator::set_clearBrush( devicePlot* hdc, vector<string> a)
 {
     cout << "Pen " << a.size() << endl;  
@@ -164,7 +180,7 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     if (y1>n || y1<0 || y2>n || y2<0) throw CCoordException("Line");
     Line l(x1,y1,x2,y2);
     
-    l.show( *hdc );
+    l.show( hdc );
     
 }
 void interpretator::set_Point(devicePlot* hdc, vector<string> a)
@@ -184,7 +200,7 @@ void interpretator::set_Point(devicePlot* hdc, vector<string> a)
     
     plotPoint l( x1, y1);
     
-    l.show( *hdc );
+    l.show( hdc );
     
     
 }
@@ -207,7 +223,7 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     
     Ellipse l( x1,y1,x2,y2);
     
-    l.show( *hdc );
+    l.show( hdc );
     
     
 }
@@ -227,6 +243,6 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     if (y1>n || y1<0 || y2>n || y2<0) throw CCoordException("Rectangle");
     Rectangle l(x1,y1,x2,y2);
     
-    l.show( *hdc);
+    l.show( hdc);
     
 }

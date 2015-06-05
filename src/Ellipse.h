@@ -22,7 +22,7 @@ protected:
 public:
     Ellipse(int x1,int y1, int x2,int y2 );
     void show (devicePlot hdc );
-      
+    void show (devicePlot *hdc );  
 };
 
 

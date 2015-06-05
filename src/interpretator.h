@@ -36,6 +36,7 @@ public:
     void set_Brush(devicePlot*, vector<string>);
     void set_Pen(devicePlot*, vector<string>);
     void set_clearBrush(devicePlot*, vector<string>);
+    void set_setColor( devicePlot* hdc, vector<string> a);
     
     virtual ~interpretator();
 private:

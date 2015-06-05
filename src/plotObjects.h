@@ -18,8 +18,9 @@ public:
     plotObjects(const plotObjects& orig);
     virtual ~plotObjects();
     
-    virtual void show( devicePlot hdc ){std::cout << 1 << std::endl;};
+    virtual void show( devicePlot hdc ){};
     virtual void fill( devicePlot hdc,char ){};
+    virtual void show( devicePlot *hdc ){};
     
 private:
 

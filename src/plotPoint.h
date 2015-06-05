@@ -17,9 +17,13 @@ protected:
 public:
     plotPoint( int X, int Y):X(X),Y(Y){};
     
-    virtual void show(devicePlot hdc,char znak='*' )
+    virtual void show( devicePlot *hdc ){
+        hdc->putPixel(X,Y,hdc->Pen);
+    };
+    
+    virtual void show(devicePlot hdc)
     {
-    	hdc.putPixel(X,Y,znak);
+    	hdc.putPixel(X,Y,'*');
     }
     void fill( devicePlot hdc,char znak ){
      
