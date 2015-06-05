@@ -40,3 +40,31 @@ void Line::show(devicePlot hdc )
     }
  }
 
+void  Line::swap(int &a, int &b) {
+    	int tmp = a;
+    	a = b;
+    	b = tmp;
+    }
+
+
+   void Line::setCoordinates (int x1,int y1, int x2,int y2 ) {
+    	X=x1;
+    	Y=y1;
+    	
+    	x=x2;
+	y=y2;
+    }
+   
+   
+   
+    Line::Line(int x1,int y1, int x2,int y2 ):plotPoint(x1,y1){
+       x=x2;
+       y=y2;
+       /*
+       Jestlize A, B jsou dva ruzne body, pak vektor p = B - A nazyvame smerovy vektor primky AB.
+       V nasem pripade smerovy vektor p bubeme mit dve parametricke rovnice (p(p1,p2)):
+       x=p1*t+x1 kde t=(x-x1)/p1
+       y=p2*t+y1 kde t=(y-y1)/p2
+       */
+    }
+    
