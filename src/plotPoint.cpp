@@ -12,3 +12,12 @@
 plotPoint::~plotPoint() {
 }
 
+  /*void plotPoint::show(devicePlot hdc,char znak='*' )
+    {
+    	hdc.putPixel(X,Y,znak);
+    }*/
+  
+ /*void plotPoint::fill( devicePlot hdc,char znak ){
+     
+	   hdc.putPixel(X,Y,znak);
+	};*/

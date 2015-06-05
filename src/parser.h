@@ -22,7 +22,7 @@ public:
   vector<string> terminators;
   
  
-  void addTerminator( string rez ) { terminators.push_back( rez ); }
+  void addTerminator( string );
   
   void flush(string &rez) {
     if ( rez.size() > 0 ) {

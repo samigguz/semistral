@@ -6,7 +6,11 @@
  */
 
 #include "parser.h"
+#include <string>
+#include <vector>
+#include <algorithm>
 
+using namespace std;
 parser::parser() {
 }
 
@@ -16,6 +20,7 @@ parser::parser(const parser& orig) {
 parser::~parser() {
 }
 
+void parser::addTerminator( string rez ) { terminators.push_back( rez ); }
   
   
 
