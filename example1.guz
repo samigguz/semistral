@@ -2,11 +2,16 @@
 setSize(35,35)  // size
 
 
-    Line(10,10,20,20)
-   
+    //Line(1,5,15,15)
+    usePen('.')
+    useBrush('@')
+    Rectangle(1,5,20,20) 
+    clearBrush
+    usePen('*')
+    Ellipse(1,5,20,20)
         
    // ghbsjkd;kasd
 
-           Rectangle(5,5,15,15)
+     
 
       

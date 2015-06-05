@@ -22,7 +22,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    interpretator mainInterpretator("examples/example1.guz","example1.out");
+    interpretator mainInterpretator("example1.guz","example1.out");
     
     mainInterpretator.doIt();
     

@@ -32,7 +32,7 @@ class Line : public plotPoint {
     }
     Line(int x1,int y1, int x2,int y2 ):plotPoint(x1,y1){
        x=x2;
-	   y=y2;
+       y=y2;
        /*
        Jestlize A, B jsou dva ruzne body, pak vektor p = B - A nazyvame smerovy vektor primky AB.
        V nasem pripade smerovy vektor p bubeme mit dve parametricke rovnice (p(p1,p2)):
@@ -46,7 +46,7 @@ class Line : public plotPoint {
     	Y=y1;
     	
     	x=x2;
-	    y=y2;
+	y=y2;
     }
 
     void  swap(int &a, int &b) {

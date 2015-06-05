@@ -16,7 +16,7 @@ class devicePlot {
 public:
     devicePlot(){M=N=0;};
     
-		devicePlot(int m,int n):M(m),N(n)
+		devicePlot(int n,int m):M(m),N(n),Brush(' '),Pen('*')
 		{
 			array=new char *[m];
 
@@ -30,7 +30,7 @@ public:
 			
 		}
 		
-		void putPixel(int X, int Y) { putPixel(X,Y,'*'); }
+		void putPixel(int X, int Y) { putPixel(X,Y,Pen); }
 		
 		void putPixel(int X, int Y, char znak) {
 		  
@@ -46,9 +46,12 @@ public:
         void printInfo();
             
              char **array;
+             char Brush;
+             char Pen;
 	private:
 		int M;
 		int N;
+               
 		
 	 	
 

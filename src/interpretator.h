@@ -23,7 +23,7 @@ public:
     interpretator();
     interpretator(std::string fNameIn, std::string fNameOut);
     interpretator(const interpretator& orig);
-    
+    void set_size(int,int);
     void doIt();
     
     devicePlot* set_devicePlot( vector<string> );
@@ -33,9 +33,15 @@ public:
     void set_Rectangle( devicePlot*, vector<string> );
     void set_Point(devicePlot*, vector<string>);
     void set_Ellipse(devicePlot*, vector<string>);
+    void set_Brush(devicePlot*, vector<string>);
+    void set_Pen(devicePlot*, vector<string>);
+    void set_clearBrush(devicePlot*, vector<string>);
     
     virtual ~interpretator();
 private:
+    int m,n;
+    char Brush;
+    char Pen;
     std::string fileNameIn, fileNameOut;
 };
 

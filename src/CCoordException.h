@@ -1,3 +1,10 @@
+/* 
+ * File:   CCoordException.h
+ * Author: Гузель
+ *
+ * Created on 4 июня 2015 г., 20:47
+ */
+
 #ifndef CCOORDEXCEPTION_H
 #define	CCOORDEXCEPTION_H
 
@@ -19,4 +26,6 @@ class CCoordException
             string Object;
 };
 
+
 #endif	/* CCOORDEXCEPTION_H */
+

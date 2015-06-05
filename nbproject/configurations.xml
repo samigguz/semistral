@@ -4,7 +4,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Исходные файлы"
                    projectFiles="true">
-      <itemPath>CCoordException.cpp</itemPath>
+      <itemPath>src/CCoordException.cpp</itemPath>
       <itemPath>src/Circle.cpp</itemPath>
       <itemPath>src/Ellipse.cpp</itemPath>
       <itemPath>src/Line.cpp</itemPath>
@@ -21,7 +21,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Файлы заголовков"
                    projectFiles="true">
-      <itemPath>CCoordException.h</itemPath>
+      <itemPath>src/CCoordException.h</itemPath>
       <itemPath>src/Circle.h</itemPath>
       <itemPath>src/Ellipse.h</itemPath>
       <itemPath>src/Line.h</itemPath>
@@ -59,11 +59,11 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="CCoordException.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="CCoordException.h" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="example1.guz" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CCoordException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Circle.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -128,11 +128,11 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="CCoordException.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="CCoordException.h" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="example1.guz" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/CCoordException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Circle.cpp" ex="false" tool="1" flavor2="0">
       </item>

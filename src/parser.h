@@ -82,7 +82,7 @@ public:
    addTerminator(",");
    addTerminator("(");
    addTerminator(")");
-  
+   addTerminator("\'");
   }
 
 

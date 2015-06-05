@@ -17,9 +17,9 @@ protected:
 public:
     plotPoint( int X, int Y):X(X),Y(Y){};
     
-    virtual void show(devicePlot hdc )
+    virtual void show(devicePlot hdc,char znak='*' )
     {
-    	hdc.putPixel(X,Y);
+    	hdc.putPixel(X,Y,znak);
     }
     void fill( devicePlot hdc,char znak ){
 	   hdc.putPixel(X,Y,znak);
