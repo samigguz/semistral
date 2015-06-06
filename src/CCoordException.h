@@ -16,7 +16,7 @@ using namespace std;
 class CCoordException
 {
 	public:
-	    CCoordException (const string & a );
+	    CCoordException (const string & a,int );
             friend ostream & operator << ( ostream &os, const CCoordException &exp )
             {
                 os << "Coordinates entered incorrectly in object " << exp . Object<<'.'<< endl;

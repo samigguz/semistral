@@ -1,8 +1,9 @@
 // example
-setSize(35,35)  // size
+setSize(36,35)  // size
 
 
-    //Line(1,5,15,15)
+    Line(1,5,15,15)
+    Point(1,35)
     usePen('.')
     setColor(1)
     useBrush('@')

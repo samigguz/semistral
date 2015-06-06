@@ -48,6 +48,11 @@ class Rectangle: public Line{
    	 d.show(hdc);
    }
    
+   void fill()
+   {
+       
+   }
+   
    
 };
 

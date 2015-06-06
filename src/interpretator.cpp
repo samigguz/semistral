@@ -7,6 +7,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <ctype.h>
 #include "interpretator.h"
 #include "parser.h"
 #include "devicePlot.h"
@@ -18,10 +19,10 @@
 
 using namespace std;
 
-interpretator::interpretator():Brush(' '),Pen('*') {
+interpretator::interpretator():Brush(' '),Pen('*'),numberOfLine(0) {
 }
 
-interpretator::interpretator(std::string fNameIn, std::string fNameOut):Brush(' '),Pen('*') {
+interpretator::interpretator(std::string fNameIn, std::string fNameOut):Brush(' '),Pen('*'),numberOfLine(0) {
     this->fileNameIn = fNameIn;
     this->fileNameOut= fNameOut;
 }
@@ -44,7 +45,8 @@ void interpretator::doIt() {
     while ( !fin.eof()) {
       string s;
       getline(fin,s);
-      //cout <<s << endl;
+      numberOfLine++;
+      line=s;
       //del comments
       size_t pos = s.find_first_of("//");
       if ( pos != string::npos) {
@@ -54,8 +56,6 @@ void interpretator::doIt() {
       vector<string> tokens = par.doParsing(s);
       if ( tokens.size() == 0) continue;
       
-      //cout << tokens[0] << endl;
-      
       if ( start) { 
          if (  tokens[0] != "setSize") {
           cout << " Error! Not set size" << endl;
@@ -64,7 +64,8 @@ void interpretator::doIt() {
              start = false;
              hdc = this->set_devicePlot( tokens );
              if ( hdc == NULL ) {
-                 cout << "error init devicePlot " << endl;
+                 throw CCoordException(line,numberOfLine);
+                 //cout << "error init devicePlot " << endl;
                  exit;
              }
          }
@@ -95,15 +96,18 @@ void interpretator::doIt() {
 devicePlot* interpretator::set_devicePlot(vector<string> a) {
   cout << a.size() << endl;  
   if ( a.size() != 6) {
-      cout << " Error setSize " << endl;
+      throw CCoordException(line,numberOfLine);
       return NULL;
   }  
+  
+  if (!isDigit(a[2])||!isDigit(a[4])) throw CCoordException(line,numberOfLine);
   int x = atoi(a[2].c_str());
   int y = atoi(a[4].c_str());
+  if (x<=0 || x>1000 || y>1000|| y<=0 ) throw CCoordException(line,numberOfLine);
   set_size(x,y);
   return new deviceColorPlot(x,y);
 }
-void interpretator::set_size(int M,int N)
+void interpretator::set_size(int N,int M)
 {
     m=M;
     n=N;
@@ -116,35 +120,34 @@ interpretator::~interpretator() {
 }
 
 void interpretator::set_Brush( devicePlot* hdc, vector<string> a)
-{
-    cout << "Brush " << a.size() << endl;  
+{ 
+    
     if ( a.size() != 6) {
-        cout << " Error in Brush " << endl;
-        return;
+        throw CCoordException(line,numberOfLine);
     }    
     
     Brush=a[3][0];
+
     hdc->Brush=Brush;
     
 }
 void interpretator::set_Pen( devicePlot* hdc, vector<string> a)
-{
-    cout << "Pen " << a.size() << endl;  
+{ 
     if ( a.size() != 6) {
-        cout << " Error in Pen " << endl;
+        throw CCoordException(line,numberOfLine);
         return;
     }    
     
+    
     Pen=a[3][0];
+    
     hdc->Pen=Pen;
 }
 
 void interpretator::set_setColor( devicePlot* hdc, vector<string> a)
-{
-    cout << "setColor " << a.size() << endl;  
+{ 
     if ( a.size() != 4) {
-        cout << " Error in setColor " << endl;
-        return;
+        throw CCoordException(line,numberOfLine);
     }    
     cout << atoi( a[2].c_str()) << endl;
     
@@ -153,9 +156,8 @@ void interpretator::set_setColor( devicePlot* hdc, vector<string> a)
 
 void interpretator::set_clearBrush( devicePlot* hdc, vector<string> a)
 {
-    cout << "Pen " << a.size() << endl;  
     if ( a.size() != 1) {
-        cout << " Error in Pen " << endl;
+        throw CCoordException(line,numberOfLine);
         return;
     }    
     
@@ -164,20 +166,20 @@ void interpretator::set_clearBrush( devicePlot* hdc, vector<string> a)
     
 }
 void interpretator::set_Line( devicePlot* hdc, vector<string> a){
-    cout << "Line " << a.size() << endl;  
+   
     if ( a.size() != 10) {
-        cout << " Error in Line " << endl;
-        return;
+        throw CCoordException(line,numberOfLine);
     }    
     
+    if (!isDigit(a[2]) || !isDigit(a[4]) ||!isDigit(a[6]) ||!isDigit(a[8])) throw CCoordException(line,numberOfLine);
     int x1 = atoi(a[2].c_str());
     int y1 = atoi(a[4].c_str());
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
      //if (  X >=0 && X < N && Y>=0 && Y<M )
-    if (x1>m || x1<0 || x2>m || x2<0) throw CCoordException("Line");
-    if (y1>n || y1<0 || y2>n || y2<0) throw CCoordException("Line");
+    if (  x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
+    if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
     Line l(x1,y1,x2,y2);
     
     l.show( hdc );
@@ -185,17 +187,17 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
 }
 void interpretator::set_Point(devicePlot* hdc, vector<string> a)
 {
-    
-    cout << "Point " << a.size() << endl;  
+     
     if ( a.size() != 6) {
-        cout << " Error in Point " << endl;
-        return;
+        throw CCoordException(line,numberOfLine);
     }    
     
+    if (!isDigit(a[2]) || !isDigit(a[4])) throw CCoordException(line,numberOfLine);
+
     int x1 = atoi(a[2].c_str());
     int y1 = atoi(a[4].c_str());
     
-   if (x1>m || x1<0 || y1>n || y1<0) throw CCoordException("Line");
+   if (x1>=m || x1<0 || y1>=n || y1<0) throw CCoordException(line,numberOfLine);
    
     
     plotPoint l( x1, y1);
@@ -206,20 +208,19 @@ void interpretator::set_Point(devicePlot* hdc, vector<string> a)
 }
 void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
 {
-    
-    cout << "Ellipse " << a.size() << endl;  
+     
     if ( a.size() != 10) {
-        cout << " Error in Ellipse " << endl;
-        return;
+       throw CCoordException(line,numberOfLine);
     }    
-    
+    if (!isDigit(a[2]) || !isDigit(a[4]) ||!isDigit(a[6]) ||!isDigit(a[8])) throw CCoordException(line,numberOfLine);
+
     int x1 = atoi(a[2].c_str());
     int y1 = atoi(a[4].c_str());
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-    if (x1>m || x1<0 || x2>m || x2<0) throw CCoordException("Ellipse");
-    if (y1>n || y1<0 || y2>n || y2<0) throw CCoordException("Ellipse");
+    if (x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
+    if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
     
     Ellipse l( x1,y1,x2,y2);
     
@@ -228,21 +229,35 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     
 }
 void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
-    cout << "Rect " << a.size() << endl;  
+   
     if ( a.size() != 10) {
-        cout << " Error in Rectangle " << endl;
+        throw CCoordException(line,numberOfLine);
         return;
     }    
     
+    if (!isDigit(a[2]) || !isDigit(a[4]) ||!isDigit(a[6]) ||!isDigit(a[8])) throw CCoordException(line,numberOfLine);
+
     int x1 = atoi(a[2].c_str());
     int y1 = atoi(a[4].c_str());
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-    if (x1>m || x1<0 || x2>m || x2<0) throw CCoordException("Rectangle");
-    if (y1>n || y1<0 || y2>n || y2<0) throw CCoordException("Rectangle");
+    if (x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
+    if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
     Rectangle l(x1,y1,x2,y2);
     
     l.show( hdc);
     
 }
+
+
+ bool interpretator::isDigit(string &a)
+ {
+     
+     if (a=="") return false;
+     for (unsigned i=0;i<a.size();i++)
+         if (!isdigit(a[i])) return false;
+     
+     return true;
+     
+ }

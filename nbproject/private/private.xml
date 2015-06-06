@@ -7,23 +7,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Line.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/painter.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/plotPoint.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Ellipse.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Rectangle.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/painter.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Ellipse.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/plotPoint.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/devicePlot.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Rectangle.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/main.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/plotObjects.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Circle.h</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Circle.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/Line.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/plotObjects.cpp</file>
-            <file>file:/mnt/sda3/andrew/NetBeansProjects/asciGraph/src/devicePlot.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Rectangle.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Ellipse.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/devicePlot.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Line.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/main.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Rectangle.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/example1.guz</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Line.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/interpretator.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Ellipse.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/parser.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/painter.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotObjects.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Circle.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotPoint.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/devicePlot.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/parser.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/CCoordException.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Circle.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotObjects.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/interpretator.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotPoint.h</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/painter.cpp</file>
+            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/CCoordException.h</file>
         </group>
     </open-files>
 </project-private>
