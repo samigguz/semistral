@@ -22,7 +22,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    for (int i=0;i<40;i++)
+    for (int i=0;i<49;i++)
         cout<<i;
     
     interpretator mainInterpretator("example1.guz","example1.out");

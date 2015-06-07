@@ -52,7 +52,7 @@ Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x
     } 
       
 void Ellipse::show (devicePlot *hdc ){
-        cout<<endl<<"*******************************************"<<endl;
+        //cout<<endl<<"*******************************************"<<endl;
 
      double step=(2*M_PI/4)/STEP;
 	  
