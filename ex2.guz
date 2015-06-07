@@ -1,7 +1,10 @@
 // example
 setSize(40,100)  // size
-usePen('.')    
-setColor(1)
+
+
+    //             
+    usePen('.')
+    setColor(1)
     useBrush('@')
     //Rectangle(1,5,20,20) 
     clearBrush
