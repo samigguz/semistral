@@ -22,8 +22,10 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    interpretator mainInterpretator("example1.guz","example1.out");
+    for (int i=0;i<49;i++)
+        cout<<i;
     
+    interpretator mainInterpretator("example1.guz","example1.out");
     mainInterpretator.doIt();
     
         //devicePlot hdc(35,35);

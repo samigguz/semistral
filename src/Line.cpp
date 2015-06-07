@@ -11,14 +11,14 @@
 void Line::show(devicePlot *hdc )
  {
     //std::cout << "Line " << std::endl;    
-    bool steep =abs(y - Y) > abs(x - X); // ��������� ���� ������� �� ��� ��� � �� ��� �����
-    // �������� ����� �� ���������, ���� ���� ������� ������� �������
+    bool steep =abs(y - Y) > abs(x - X); //zkontrolujeme rust useku na ose x a y
+    //odrazeme linii sikmo, pokud uhel sklonu je prilis velky
     if (steep)
-    {   //������ � � � �������
-        swap(X, Y); // ����������� ��������� �������� � ��������� ������� ��� �������
+    {   //vemenime X a Y
+        swap(X, Y); 
         swap(x, y);
     }
-    // ���� ����� ����� �� ����� �������, �� ������ ������ � ����� ������� �������
+    //jestlize linie roste zprava doleva,vemenime zacatek a konec useku
     if (X > x)
     {
         swap(X, x);
@@ -26,12 +26,12 @@ void Line::show(devicePlot *hdc )
     }
     int dx = x - X;
     int dy = abs(y - Y);
-    int error = dx / 2; // ����� ������������ ����������� � ���������� �� dx, ����� ���������� �� ������ ������
-    int ystep = (Y < y) ? 1 : -1; // �������� ����������� ����� ���������� y
+    int error = dx / 2; // tady se pouziva optimalizace - vynasobeni dx, abychom se zbavili zbytecnych zlomku
+    int ystep = (Y < y) ? 1 : -1; //zvolime smer rustu souradnice Y
     int yy = Y;
     for (int xx = X; xx <= x; xx++)
     {
-        hdc->putPixel(steep ? yy : xx, steep ? xx : yy); // �� �������� ������� ���������� �� �����
+        hdc->putPixel(steep ? yy : xx, steep ? xx : yy); //vratime souradnice na svoje mista
         error -= dy;
         if (error < 0)
         {
@@ -95,11 +95,6 @@ void  Line::swap(int &a, int &b) {
     Line::Line(int x1,int y1, int x2,int y2 ):plotPoint(x1,y1){
        x=x2;
        y=y2;
-       /*
-       Jestlize A, B jsou dva ruzne body, pak vektor p = B - A nazyvame smerovy vektor primky AB.
-       V nasem pripade smerovy vektor p bubeme mit dve parametricke rovnice (p(p1,p2)):
-       x=p1*t+x1 kde t=(x-x1)/p1
-       y=p2*t+y1 kde t=(y-y1)/p2
-       */
+  
     }
     

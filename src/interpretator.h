@@ -43,7 +43,10 @@ private:
     int m,n;
     char Brush;
     char Pen;
+    int numberOfLine;
+    string line;
     std::string fileNameIn, fileNameOut;
+    bool isDigit(string &);
 };
 
 #endif	/* INTERPRETATOR_H */

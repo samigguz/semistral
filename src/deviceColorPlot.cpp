@@ -49,7 +49,7 @@ void deviceColorPlot::print(void)
 	  {
                 int c = colors[i*N+j];
                 if ( c >=0 && c < 8) cout<< col[c];
-	  	cout<<array[i][j];
+	  	cout<<array[i][j]<<" ";
 	  }
 	  cout<<endl;
 	 }

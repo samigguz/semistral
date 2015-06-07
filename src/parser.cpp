@@ -20,7 +20,7 @@ parser::parser(const parser& orig) {
 parser::~parser() {
 }
 
-void parser::addTerminator( string rez ) { terminators.push_back( rez ); }
+//void parser::addTerminator( string rez ) { terminators.push_back( rez ); }
   
   
 
