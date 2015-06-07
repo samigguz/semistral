@@ -43,7 +43,7 @@ public:
     string rez; 
      for (unsigned int i=0; i < str.size(); i++) {
        
-       if ( str[i]==' ' ) {
+       if ( str[i]==' ' || str[i]=='\n' || str[i]=='\r') {
 	 flush(rez);
 	 continue;
        } 	 
