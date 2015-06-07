@@ -19,6 +19,7 @@
 
 using namespace std;
 
+//vychozi nastaveni Brush na mezeru a Pen na hvezdicku
 interpretator::interpretator():Brush(' '),Pen('*'),numberOfLine(0) {
 }
 
@@ -95,7 +96,7 @@ void interpretator::doIt() {
 
 devicePlot* interpretator::set_devicePlot(vector<string> a) {
   cout << a.size() << endl;  
-  if ( a.size() != 6) {
+  if ( a.size() != 6) { //jestlize nema tvar "setSize(number,number)"
       throw CCoordException(line,numberOfLine);
       return NULL;
   }  
@@ -177,7 +178,6 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-     //if (  X >=0 && X < N && Y>=0 && Y<M )
     if (  x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
     if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
     Line l(x1,y1,x2,y2);

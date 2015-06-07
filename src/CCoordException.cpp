@@ -1,9 +1,14 @@
 #include "CCoordException.h"
 
-CCoordException::CCoordException (const string & a,int number ):Object(a){
-//cout << "Coordinates entered incorrectly in object " << Object<<" in line "<<number<<'.'<<endl;
+CCoordException::CCoordException (const string & a,int number ){
 
-cout << "Error in line "<<number<<" \""<<Object<<'\"' <<'.'<<endl;
+    string tmp;
+    for (unsigned i=0;i<a.size();i++)
+        if (a[i]==' ') continue;
+        else tmp+=a[i];
+    
+ Line=tmp;
+cout << "Error in line "<<number<<" \""<<Line<<'\"' <<'.'<<endl;
 
 }
 

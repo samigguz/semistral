@@ -19,11 +19,11 @@ class CCoordException
 	    CCoordException (const string & a,int );
             friend ostream & operator << ( ostream &os, const CCoordException &exp )
             {
-                os << "Coordinates entered incorrectly in object " << exp . Object<<'.'<< endl;
+                os << "Coordinates entered incorrectly in object " << exp . Line<<'.'<< endl;
                 return ( os );
             }
         private:
-            string Object;
+            string Line;
 };
 
 

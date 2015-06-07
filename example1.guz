@@ -1,17 +1,17 @@
 // example
-setSize(36,35)  // size
+setSize(40,40)  // size
 
 
-    Line(1,5,15,15)
-    Point(1,35)
+    //Line(1,5,15,15)             
     usePen('.')
     setColor(1)
     useBrush('@')
-    Rectangle(1,5,20,20) 
+    //Rectangle(1,5,20,20) 
     clearBrush
     usePen('*')
     setColor(2)
-    Ellipse(1,5,20,20)
+    Ellipse(0,22,39,1)
+ 
         
    // ghbsjkd;kasd
 
