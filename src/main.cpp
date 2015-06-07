@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     for (int i=0;i<49;i++)
         cout<<i;
     
-    interpretator mainInterpretator("example1.guz","example1.out");
+    interpretator mainInterpretator("ex2.guz","example1.out");
     mainInterpretator.doIt();
     
         //devicePlot hdc(35,35);
