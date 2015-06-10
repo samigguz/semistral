@@ -16,21 +16,11 @@ protected:
      int X, Y;
 public:
     plotPoint( int X, int Y):X(X),Y(Y){};
+    virtual ~plotPoint();
     
-    virtual void show( devicePlot *hdc ){
-        hdc->putPixel(X,Y,hdc->Pen);
-    };
+    virtual void show( devicePlot *hdc );
     
-    virtual void show(devicePlot hdc)
-    {
-    	hdc.putPixel(X,Y,'*');
-    }
-    void fill( devicePlot hdc,char znak ){
-     
-	   hdc.putPixel(X,Y,znak);
-	};
-	
-    virtual ~plotPoint();    
+    
 };
 
 

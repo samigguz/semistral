@@ -57,3 +57,13 @@ void deviceColorPlot::print(void)
    cout << this->default_console << endl;	
 }
 
+void deviceColorPlot::putPixel(int X, int Y, char znak) {
+       // cout << "a" << Color << endl;
+		  if (  X >=0 && X < N && Y>=0 && Y<M )
+		  { 
+		    array[Y][X]=znak;
+                    colors[Y * N + X] = Color;
+		  }  
+    }
+
+ void deviceColorPlot::putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }

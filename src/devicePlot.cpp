@@ -8,33 +8,6 @@
 #include "devicePlot.h"
 
 using namespace std;
-
-void devicePlot::fill(int x1,int x2, int y1,int y2, char znak)
-
-{
-	
-	int i,j;
-	for ( i=x1;i<=x2;i++)
-	
-	{
-		for (j=y1;j<=y2;j++)
-		{
-			if (array[i][j]==' ') continue;
-			else //nasli znak
-			
-			{     j++;   //propuskaem
-			  while (array[i][j]==' ')
-			
-			  {
-		     	    array[i][j]=znak;j++;
-			  }
-		    }
-			
-		}
-		
-	}
-	
-}
 void devicePlot::print(void)
 {
 	for(int i=0;i<M;i++)
@@ -55,3 +28,27 @@ void devicePlot::printInfo()
      	
 	
 }
+
+devicePlot::devicePlot(int n,int m):M(m),N(n),Brush(' '),Pen('*')
+		{
+			array=new char *[n];
+
+	           for (int i = 0; i < n; i++)
+                    array[i] = new char [m];
+                    for(int i=0;i<n;i++)
+	              for (int j=0;j<m;j++)
+	                {
+	                  array[i][j]=' ';
+	                }
+			
+		}
+
+  void devicePlot::putPixel(int X, int Y, char znak) {
+                    cout << "b" << endl;
+		  if (  X >=0 && X < N && Y>=0 && Y<M )
+		  { 
+		    array[Y][X]=znak;
+		  }  
+		  
+		}
+  

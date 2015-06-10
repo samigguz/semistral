@@ -18,33 +18,11 @@ class devicePlot {
 public:
     devicePlot(){M=N=0;};
     
-		devicePlot(int n,int m):M(m),N(n),Brush(' '),Pen('*')
-		{
-			array=new char *[n];
-
-	           for (int i = 0; i < n; i++)
-                    array[i] = new char [m];
-                    for(int i=0;i<n;i++)
-	              for (int j=0;j<m;j++)
-	                {
-	                  array[i][j]=' ';
-	                }
-			
-		}
+    devicePlot(int n,int m);
 		
-		virtual void putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }
-		
-		virtual void putPixel(int X, int Y, char znak) {
-                    cout << "b" << endl;
-		  if (  X >=0 && X < N && Y>=0 && Y<M )
-		  { 
-		    array[Y][X]=znak;
-		  }  
-		  
-		}
+        virtual void putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }
+	virtual void putPixel(int X, int Y, char znak);
 	virtual	void print(void);
-        virtual	void fill(int,int,int,int, char);
-
         virtual void setColor(int a){Color=a;}
         
         void printInfo();

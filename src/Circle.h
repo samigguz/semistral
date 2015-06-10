@@ -13,7 +13,7 @@
 class Circle: public Ellipse
 {
 	public:
-		Circle (int x,int y,int r):Ellipse(x-r,y-r,x+r,y+r){}
+	 Circle (int x,int y,int r):Ellipse(x-r,y-r,x+r,y+r){}
 		
 	
 };

@@ -14,11 +14,10 @@
 class painter {
 public:
     painter();
-   
-    void paint( plotObjects * a);
+    virtual ~painter();
+    void paint ( plotObjects *);
     void setHDC( devicePlot &h);
     
-    virtual ~painter();
 private:
     devicePlot hdc;
 };

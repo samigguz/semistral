@@ -6,18 +6,13 @@
  */
 
 #include "plotPoint.h"
-
+#include "plotObjects.h"
 
 
 plotPoint::~plotPoint() {
 }
 
-  /*void plotPoint::show(devicePlot hdc,char znak='*' )
-    {
-    	hdc.putPixel(X,Y,znak);
-    }*/
-  
- /*void plotPoint::fill( devicePlot hdc,char znak ){
-     
-	   hdc.putPixel(X,Y,znak);
-	};*/
+ 
+  void plotPoint::show( devicePlot *hdc ){
+        hdc->putPixel(X,Y,hdc->Pen);
+    };

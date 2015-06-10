@@ -14,7 +14,8 @@ void Line::show(devicePlot *hdc )
     bool steep =abs(y - Y) > abs(x - X); //zkontrolujeme rust useku na ose x a y
     //odrazeme linii sikmo, pokud uhel sklonu je prilis velky
     if (steep)
-    {   //vemenime X a Y
+    {   
+        ///<vemenime X a Y
         swap(X, Y); 
         swap(x, y);
     }
@@ -27,11 +28,12 @@ void Line::show(devicePlot *hdc )
     int dx = x - X;
     int dy = abs(y - Y);
     int error = dx / 2; // tady se pouziva optimalizace - vynasobeni dx, abychom se zbavili zbytecnych zlomku
-    int ystep = (Y < y) ? 1 : -1; //zvolime smer rustu souradnice Y
+    int ystep = (Y < y) ? 1 : -1; ///<zvolime smer rustu souradnice Y
     int yy = Y;
     for (int xx = X; xx <= x; xx++)
     {
-        hdc->putPixel(steep ? yy : xx, steep ? xx : yy); //vratime souradnice na svoje mista
+        ///<vratime souradnice na svoje mista
+        hdc->putPixel(steep ? yy : xx, steep ? xx : yy); 
         error -= dy;
         if (error < 0)
         {

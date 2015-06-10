@@ -7,10 +7,10 @@
 
 #include "Ellipse.h"
 Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x1(x1),y1(y1),x2(x2),y2(y2),STEP(200) {
-       a= (x2-x1)/2; //mala poloosa
-       b= (y2-y1)/2;//velka poloosa
+       a= (x2-x1)/2; ///< mala poloosa
+       b= (y2-y1)/2;///< velka poloosa
      
-       c = sqrt(fabs( a*a -b*b) );//Ohniskova vzdalenost, vyjadruje vzdalenost ohniska od stredu elipsy
+       c = sqrt(fabs( a*a -b*b) );///<Ohniskova vzdalenost, vyjadruje vzdalenost ohniska od stredu elipsy
        /*
         *  Ciselna excentricita e vyjadruje miru zplosteni elipsy,
         *  miru odlisnosti od kruznice. Ma smysl ji porovnavat i pro 
@@ -24,7 +24,7 @@ Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x
         *souradne soustavy a hlavni osa je rovnobezna s osou x.
         */
        
-       p=a-c*e;//parametr elipsy
+       p=a-c*e;///<parametr elipsy
     }
 
  
