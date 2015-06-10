@@ -82,6 +82,7 @@ void interpretator::doIt() {
         
         if ( tokens[0] == "Point") set_Point( hdc, tokens);
         if ( tokens[0] == "Ellipse" || tokens[0] == "Circle" ) set_Ellipse( hdc, tokens);
+        if ( tokens[0] == "clearPen" || tokens[0] == "Circle" ) set_clearPen( hdc, tokens);
       } 
       
       
@@ -166,6 +167,17 @@ void interpretator::set_clearBrush( devicePlot* hdc, vector<string> a)
     hdc->Brush=Brush;
     
 }
+void interpretator::set_clearPen( devicePlot* hdc, vector<string> a)
+{
+    if ( a.size() != 1) {
+        throw CCoordException(line,numberOfLine);
+        return;
+    }    
+    
+    Pen='*';
+    hdc->Pen=Pen;
+    
+}
 void interpretator::set_Line( devicePlot* hdc, vector<string> a){
    
     if ( a.size() != 10) {
@@ -178,7 +190,7 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-    if (  x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
+    if (x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
     if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
     Line l(x1,y1,x2,y2);
     
@@ -224,9 +236,8 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     
     Ellipse l( x1,y1,x2,y2);
     
-    l.show( hdc );
-    
-    
+    if (hdc->Brush!=' ') l.fill( hdc,hdc->Brush);
+    l.show( hdc);
 }
 void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
    
@@ -246,6 +257,7 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
     Rectangle l(x1,y1,x2,y2);
     
+    if (hdc->Brush!=' ') l.fill(x1,y1,x2,y2,hdc);
     l.show( hdc);
     
 }

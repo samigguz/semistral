@@ -1,5 +1,5 @@
 // example
-setSize(40,100)  // size
+setSize(50,100)  // size
 
 
     //             
@@ -46,6 +46,3 @@ setSize(40,100)  // size
     Line (35,5,36,5)
     Line (41,5,42,5)
     Line (44,5,45,5)
-     
-
-      

@@ -50,8 +50,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>ex2.guz</itemPath>
-    <itemPath>examples/example2</itemPath>
+    <itemPath>example_1</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -63,11 +62,9 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="ex2.guz" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="example1.guz" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="examples/example2" ex="false" tool="3" flavor2="0">
+      <item path="example_1" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -140,11 +137,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="ex2.guz" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="example1.guz" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="examples/example2" ex="false" tool="3" flavor2="0">
+      <item path="example_1" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
       </item>

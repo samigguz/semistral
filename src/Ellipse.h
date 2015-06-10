@@ -10,6 +10,7 @@
 
 #include <cmath>
 #include "plotPoint.h"
+#include "Line.h"
 #include <iostream>
 using namespace std;
 
@@ -20,9 +21,9 @@ protected:
      double a,b,e,p,c;
      int STEP;
 public:
-    Ellipse(int x1,int y1, int x2,int y2 );
-    void show (devicePlot hdc );
-    void show (devicePlot *hdc );  
+    Ellipse(int,int,int,int);
+    void show (devicePlot *);  
+    void fill(devicePlot *,char);
 };
 
 
