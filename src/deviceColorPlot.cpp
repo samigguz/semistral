@@ -17,10 +17,10 @@ deviceColorPlot::deviceColorPlot():devicePlot() {
      Color=0;
 }
 
-deviceColorPlot::deviceColorPlot(int n,int m):devicePlot(n,m){
+deviceColorPlot::deviceColorPlot(int X,int Y):devicePlot(X,Y){
     this->default_console = "\033[0m";
-    colors = new int[m*n];
-    for (int i=0; i< m*n; i++)
+    colors = new int[maxX * maxY];
+    for (int i=0; i< maxX * maxY; i++)
        colors[i]=0;  
     Color=0;
 }
@@ -43,11 +43,11 @@ void deviceColorPlot::print(void)
     }
     
     
-	for(int i=0;i<M;i++)
+	for(int i=0;i<maxY;i++)
 	  {
-	  for (int j=0;j<N;j++)
+	  for (int j=0;j<maxX;j++)
 	  {
-                int c = colors[i*N+j];
+                int c = colors[i * maxX+j];
                 if ( c >=0 && c < 8) cout<< col[c];
 	  	cout<<array[i][j]<<" ";
 	  }
@@ -59,10 +59,10 @@ void deviceColorPlot::print(void)
 
 void deviceColorPlot::putPixel(int X, int Y, char znak) {
        // cout << "a" << Color << endl;
-		  if (  X >=0 && X < N && Y>=0 && Y<M )
+		  if (  X >=0 && X < maxX && Y>=0 && Y<maxY )
 		  { 
 		    array[Y][X]=znak;
-                    colors[Y * N + X] = Color;
+                    colors[Y * maxX + X] = Color;
 		  }  
     }
 

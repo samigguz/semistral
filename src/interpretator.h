@@ -28,6 +28,7 @@ public:
     
     devicePlot* set_devicePlot( vector<string> );
     
+    void check_Limits(int x, int y );
     
     void set_Line( devicePlot*, vector<string> );
     void set_Rectangle( devicePlot*, vector<string> );
@@ -41,7 +42,7 @@ public:
     
     virtual ~interpretator();
 private:
-    int m,n;
+    int maxX,maxY;
     char Brush;
     char Pen;
     int numberOfLine;

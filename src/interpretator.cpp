@@ -28,6 +28,10 @@ interpretator::interpretator(std::string fNameIn, std::string fNameOut):Brush(' 
     this->fileNameOut= fNameOut;
 }
 
+void interpretator::check_Limits(int X, int Y) {
+    if (X>=maxX || X<0 || Y>=maxY || Y<0) throw CCoordException(line,numberOfLine);
+}
+
 void interpretator::doIt() {
     ifstream fin;
     fin.open(fileNameIn.c_str());
@@ -109,10 +113,10 @@ devicePlot* interpretator::set_devicePlot(vector<string> a) {
   set_size(x,y);
   return new deviceColorPlot(x,y);
 }
-void interpretator::set_size(int N,int M)
+void interpretator::set_size(int X,int Y)
 {
-    m=M;
-    n=N;
+    maxX=X;
+    maxY=Y;
 }
 
 interpretator::interpretator(const interpretator& orig) {
@@ -190,8 +194,9 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-    if (x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
-    if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
+    check_Limits(x1,y1);
+    check_Limits(x2,y2);
+    
     Line l(x1,y1,x2,y2);
     
     l.show( hdc );
@@ -209,8 +214,8 @@ void interpretator::set_Point(devicePlot* hdc, vector<string> a)
     int x1 = atoi(a[2].c_str());
     int y1 = atoi(a[4].c_str());
     
-   if (x1>=m || x1<0 || y1>=n || y1<0) throw CCoordException(line,numberOfLine);
-   
+    check_Limits(x1,y1);
+    
     
     plotPoint l( x1, y1);
     
@@ -231,8 +236,9 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-    if (x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
-    if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
+    check_Limits(x1,y1);
+    check_Limits(x2,y2);
+    
     
     Ellipse l( x1,y1,x2,y2);
     
@@ -240,7 +246,7 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     l.show( hdc);
 }
 void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
-   
+    cout << a.size() << endl;
     if ( a.size() != 10) {
         throw CCoordException(line,numberOfLine);
         return;
@@ -253,8 +259,9 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     int x2 = atoi(a[6].c_str());
     int y2 = atoi(a[8].c_str());
     
-    if (x1>=m || x1<0 || x2>=m || x2<0) throw CCoordException(line,numberOfLine);
-    if (y1>=n || y1<0 || y2>=n || y2<0) throw CCoordException(line,numberOfLine);
+    check_Limits(x1,y1);
+    check_Limits(x2,y2);
+    
     Rectangle l(x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill(x1,y1,x2,y2,hdc);

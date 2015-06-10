@@ -68,11 +68,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ascigraph
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/semistral
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ascigraph: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/semistral: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ascigraph ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/semistral ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/src/CCoordException.o: src/CCoordException.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -145,7 +145,7 @@ ${OBJECTDIR}/src/plotPoint.o: src/plotPoint.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ascigraph
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/semistral
 
 # Subprojects
 .clean-subprojects:

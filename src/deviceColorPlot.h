@@ -16,7 +16,7 @@ using namespace std;
 class deviceColorPlot: public devicePlot {
 public:
     deviceColorPlot();
-    deviceColorPlot(int n,int m);
+    deviceColorPlot(int X,int Y);
     deviceColorPlot(const deviceColorPlot& orig);
     virtual ~deviceColorPlot();
     

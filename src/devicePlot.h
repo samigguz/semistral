@@ -16,9 +16,9 @@ using namespace std;
 
 class devicePlot {
 public:
-    devicePlot(){M=N=0;};
+    devicePlot(){maxX=maxY=0;};
     
-    devicePlot(int n,int m);
+    devicePlot(int X,int Y);
 		
         virtual void putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }
 	virtual void putPixel(int X, int Y, char znak);
@@ -31,8 +31,8 @@ public:
              char Brush;
              char Pen;
 	protected:
-		int M;
-		int N;
+		int maxX;
+		int maxY;
                 int Color;
 		
 	 	

@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
+CND_PLATFORM_Debug=GNU-Linux-x86
+CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
 CND_ARTIFACT_NAME_Debug=semistral
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/semistral
-CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/semistral
+CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Debug=semistral.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/semistral.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/semistral.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=ascigraph
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/ascigraph
+CND_ARTIFACT_NAME_Release=semistral
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/semistral
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=ascigraph.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/ascigraph.tar
+CND_PACKAGE_NAME_Release=semistral.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/semistral.tar
 #
 # include compiler specific variables
 #
