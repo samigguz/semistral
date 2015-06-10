@@ -135,6 +135,10 @@ void interpretator::set_Brush( devicePlot* hdc, vector<string> a)
 }
 void interpretator::set_Pen( devicePlot* hdc, vector<string> a)
 { 
+    cout << "pen "<< a.size() << endl; 
+    for (int i=0;i<a.size(); i++)
+       cout <<  ":" << a[i];
+    cout << endl;
     if ( a.size() != 6) {
         throw CCoordException(line,numberOfLine);
         return;
