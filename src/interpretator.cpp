@@ -29,7 +29,8 @@ interpretator::interpretator(std::string fNameIn, std::string fNameOut):Brush(' 
 }
 
 void interpretator::check_Limits(int X, int Y) {
-    if (X>=maxX || X<0 || Y>=maxY || Y<0) throw CCoordException(line,numberOfLine);
+    string sout = line + "---OutOfRange";
+    if (X>=maxX || X<0 || Y>=maxY || Y<0) throw CCoordException(sout,numberOfLine);
 }
 
 void interpretator::doIt() {
