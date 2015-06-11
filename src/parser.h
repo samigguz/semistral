@@ -1,8 +1,9 @@
-/* 
- * File:   parser.h
- * Author: andrew
- *
- * Created on 4 Июнь 2015 г., 3:04
+/**
+ * @file   parser.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
+ * @see    parser.cpp for implementation.
  */
 
 #ifndef PARSER_H
@@ -25,13 +26,13 @@ public:
     parser(const parser& orig);
     virtual ~parser();
   
-  void addTerminator( string rez );
-  void flush(string &rez);
-  void initTerms();
-  bool testTerminators( string );
+    void addTerminator( string rez );
+    void flush(string &rez);
+    void initTerms();
+    bool testTerminators( string );
   
-  vector<string> doParsing( string );
-  string getTerm(char t );
+    vector<string> doParsing( string );
+    string getTerm(char t );
  };
 
 #endif	/* PARSER_H */

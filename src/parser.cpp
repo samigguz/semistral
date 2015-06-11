@@ -1,8 +1,9 @@
-/* 
- * File:   parser.cpp
- * Author: andrew
- * 
- * Created on 4 Июнь 2015 г., 3:04
+/**
+ * @file   parser.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    parser.h for declaration.
  */
 
 #include "parser.h"

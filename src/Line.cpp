@@ -1,25 +1,21 @@
-/* 
- * File:   Line.cpp
- * Author: andrew
- * 
- * Created on 3 Июнь 2015 г., 0:47
+/**
+ * @file   Line.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    Line.h for declaration.
  */
 
 #include "Line.h"
 
-
 void Line::show(devicePlot *hdc )
- {
-    //std::cout << "Line " << std::endl;    
-    bool steep =abs(y - Y) > abs(x - X); //zkontrolujeme rust useku na ose x a y
-    //odrazeme linii sikmo, pokud uhel sklonu je prilis velky
+ {   
+    bool steep =abs(y - Y) > abs(x - X); 
     if (steep)
     {   
-        ///<vemenime X a Y
         swap(X, Y); 
         swap(x, y);
     }
-    //jestlize linie roste zprava doleva,vemenime zacatek a konec useku
     if (X > x)
     {
         swap(X, x);
@@ -27,12 +23,11 @@ void Line::show(devicePlot *hdc )
     }
     int dx = x - X;
     int dy = abs(y - Y);
-    int error = dx / 2; // tady se pouziva optimalizace - vynasobeni dx, abychom se zbavili zbytecnych zlomku
-    int ystep = (Y < y) ? 1 : -1; ///<zvolime smer rustu souradnice Y
+    int error = dx / 2; 
+    int ystep = (Y < y) ? 1 : -1; 
     int yy = Y;
     for (int xx = X; xx <= x; xx++)
     {
-        ///<vratime souradnice na svoje mista
         hdc->putPixel(steep ? yy : xx, steep ? xx : yy); 
         error -= dy;
         if (error < 0)
@@ -43,39 +38,6 @@ void Line::show(devicePlot *hdc )
     }
  }
 
-
-void Line::show(devicePlot hdc )
- {
-    //std::cout << "Line " << std::endl;    
-    bool steep =abs(y - Y) > abs(x - X); // ��������� ���� ������� �� ��� ��� � �� ��� �����
-    // �������� ����� �� ���������, ���� ���� ������� ������� �������
-    if (steep)
-    {   //������ � � � �������
-        swap(X, Y); // ����������� ��������� �������� � ��������� ������� ��� �������
-        swap(x, y);
-    }
-    // ���� ����� ����� �� ����� �������, �� ������ ������ � ����� ������� �������
-    if (X > x)
-    {
-        swap(X, x);
-        swap(Y, y);
-    }
-    int dx = x - X;
-    int dy = abs(y - Y);
-    int error = dx / 2; // ����� ������������ ����������� � ���������� �� dx, ����� ���������� �� ������ ������
-    int ystep = (Y < y) ? 1 : -1; // �������� ����������� ����� ���������� y
-    int yy = Y;
-    for (int xx = X; xx <= x; xx++)
-    {
-        hdc.putPixel(steep ? yy : xx, steep ? xx : yy); // �� �������� ������� ���������� �� �����
-        error -= dy;
-        if (error < 0)
-        {
-            yy += ystep;
-            error += dx;
-        }
-    }
- }
 
 void  Line::swap(int &a, int &b) {
     	int tmp = a;

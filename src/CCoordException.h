@@ -1,29 +1,47 @@
-/* 
- * File:   CCoordException.h
- * Author: Гузель
- *
- * Created on 4 июня 2015 г., 20:47
+/**
+ * @file   CCoordException.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
+ * @see    CCoordException.cpp for implementation.
  */
+
 
 #ifndef CCOORDEXCEPTION_H
 #define	CCOORDEXCEPTION_H
-
 #include <string>
-#include <cstdlib>
 #include <iostream>
+#include <cstdlib>
 using namespace std;
+/**
+*   @brief Exception class.
+*
+*   It is thrown when in the input file was used the wrong data format.
+*   It has only one private attribute CCoordException#Line.
+*/
 
 class CCoordException
 {
 	public:
-	    CCoordException (const string & a,int );
-            friend ostream & operator << ( ostream &os, const CCoordException &exp )
-            {
-                os << "Coordinates entered incorrectly in object " << exp . Line<<'.'<< endl;
-                return ( os );
-            }
+            
+	    CCoordException (const string & a,int number );
+            /*
+                string tmp;
+    for (unsigned i=0;i<a.size();i++)
+        if (a[i]==' ') continue;
+        else tmp+=a[i];
+    
+ Line=tmp;
+  cout << "Error in line "<<number<<" \""<<Line<<'\"' <<'.'<<endl;
+            }*/
+/**
+*   @brief Friend function that clarifies use with ostream.
+*   @return modified ostream
+*/
+           // friend ostream & operator << ( ostream &os, const CCoordException &exp );
+            
         private:
-            string Line;
+            string Line;/**< Line with the wrong data format. */
 };
 
 

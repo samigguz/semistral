@@ -1,8 +1,8 @@
-/* 
- * File:   painter.h
- * Author: andrew
- *
- * Created on 3 Июнь 2015 г., 1:45
+/**
+ * @file   painter.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
  */
 
 #ifndef PAINTER_H

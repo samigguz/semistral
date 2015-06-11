@@ -1,8 +1,9 @@
-/* 
- * File:   Circle.cpp
- * Author: andrew
- * 
- * Created on 3 Июнь 2015 г., 1:01
+/**
+ * @file   Circle.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    Circle.h for declaration.
  */
 
 #include "Circle.h"

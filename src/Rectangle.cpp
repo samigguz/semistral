@@ -1,15 +1,16 @@
-/* 
- * File:   Rectangle.cpp
- * Author: andrew
- * 
- * Created on 3 Июнь 2015 г., 0:53
+/**
+ * @file   Rectangle.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    Rectangle.h for declaration.
  */
 
 #include "Rectangle.h"
 
 
 Rectangle::Rectangle(int x1,int y1,int x2,int y2) {
-	setCoordinates(x1,y1,x2,y1);	// tim sestrojime primku 'a'
+	setCoordinates(x1,y1,x2,y1);
 	b.setCoordinates(x2,y1,x2,y2);
 	c.setCoordinates(x2,y2,x1,y2);
 	d.setCoordinates(x1,y2,x1,y1);
@@ -29,17 +30,6 @@ void Rectangle::fill(int x1,int y1,int x2,int y2,devicePlot* hdc)
 	 }
        hdc->Pen=ptr;
    }
-
-
-void Rectangle::show (devicePlot hdc ){
-   	 Line::show(hdc);
-   	 b.show(hdc);
-   	 c.show(hdc);
-   	 d.show(hdc);
-   }
-
-
-  
         
    void Rectangle::show (devicePlot *hdc ){
    	 Line::show(hdc);

@@ -1,8 +1,9 @@
-/* 
- * File:   painter.cpp
- * Author: andrew
- * 
- * Created on 3 Июнь 2015 г., 1:45
+/**
+ * @file   painter.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    painter.h for declaration.
  */
 
 #include "painter.h"
@@ -18,7 +19,7 @@ void painter::setHDC( devicePlot &h) {
 
 void painter::paint(plotObjects* a) {
    
-   a->show(hdc); 
+   a->show(&hdc); 
 }
 
 painter::~painter() {

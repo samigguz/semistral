@@ -1,8 +1,8 @@
-/* 
- * File:   plotObjects.h
- * Author: 
- *
- * Created on 3 Июнь 2015 г., 0:36
+/**
+ * @file   plotObjects.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
  */
 
 #ifndef PLOTOBJECTS_H
@@ -17,9 +17,6 @@ public:
     plotObjects();
     plotObjects(const plotObjects& orig);
     virtual ~plotObjects();
-    
-    virtual void show( devicePlot hdc ){};
-    virtual void fill( devicePlot hdc,char ){};
     virtual void show( devicePlot *hdc ){};
     
 private:

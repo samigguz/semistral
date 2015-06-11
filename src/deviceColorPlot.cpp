@@ -1,8 +1,9 @@
-/* 
- * File:   deviceColorPlot.cpp
- * Author: andrew
- * 
- * Created on 6 Июнь 2015 г., 0:46
+/**
+ * @file   deviceColorPlot.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    deviceColorPlot.h for declaration.
  */
 
 #include "deviceColorPlot.h"
@@ -49,7 +50,7 @@ void deviceColorPlot::print(void)
 	  {
                 int c = colors[i * maxX+j];
                 if ( c >=0 && c < 8) cout<< col[c];
-	  	cout<<array[i][j]<<" ";
+	  	cout<<array[i][j]<<"";
 	  }
 	  cout<<endl;
 	 }

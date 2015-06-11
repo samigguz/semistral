@@ -1,15 +1,21 @@
-/* 
- * File:   plotPoint.h
- * Author: 
- *
- * Created on 3 Июнь 2015 г., 0:37
+/**
+ * @file   plotPoint.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
+ * @see    plotPoint.cpp for implementation.
  */
-
 #ifndef PLOTPOINT_H
 #define	PLOTPOINT_H
 
 #include "plotObjects.h"
 
+/**
+ * @brief The Point class defines the x- and y- coordinates of a point.
+ * 
+ * It is formed from base class plotObjects.
+ * Class has a derived classes Circle,Line and Ellipse.
+ */
 
 class plotPoint: public plotObjects {
 protected:  

@@ -1,8 +1,9 @@
-/* 
- * File:   deviceColorPlot.h
- * Author: andrew
- *
- * Created on 6 Июнь 2015 г., 0:46
+/**
+ * @file   deviceColorPlot.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
+ * @see    deviceColorPlot.cpp for implementation.
  */
 
 #ifndef DEVICECOLORPLOT_H

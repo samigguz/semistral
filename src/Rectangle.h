@@ -13,18 +13,16 @@
 #include<cmath>
 
 /**
- *     @brief Class converts relative @p path to absolute.
- *
- *     If path is empty function will return
- *     current working directory in a string.
- *     @return absolute path of given string
+ * @brief Class that draws an arbitrary rectangle.
+ * 
+ * The Rectangle class represents a rectangle defined by two opposite locations (x, y)
+ * It is formed from base class Line.
+ * It has three protected attributes of class Line: Rectangle#b,
+ * Rectangle#c and Rectangle#d.
+ * The rectangle is outlined by using the current pen 
+ * and filled by using the current brush.
  */
-/**
-    \brief class Rectangle
 
-    Trida reprezentuje obdelnik,
-    ktery je zadany dvojici protilehlych rohu 
-*/
 
  
 class Rectangle: public Line{
@@ -32,10 +30,28 @@ class Rectangle: public Line{
 	protected:
 		Line b,c,d;
 	public:
-	    Rectangle(int x1,int y1,int x2,int y2);
-            void show (devicePlot *); 
-            void show (devicePlot);
-            void fill(int,int,int,int,devicePlot*);
+/**
+*   @brief Constructor with arguments.
+*   
+* @param[in] nLeftRect The x-coordinate, in logical coordinates, of the upper-left corner of the rectangle.
+* @param[in] nTopRect The y-coordinate, in logical coordinates, of the upper-left corner of the rectangle.
+* @param[in] nRightRect The x-coordinate, in logical coordinates, of the lower-right corner of the rectangle.
+* @param[in] nBottomRect The y-coordinate, in logical coordinates, of the lower-right corner of the rectangle.
+*/
+	    Rectangle(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect);
+/**
+*   @brief Virtual function that displays the object on the 2D-Canvas.
+* 
+*   @param[in] hdc Handle to a device context.
+*   
+*/
+   
+            virtual void show (devicePlot *hdc); 
+/**
+* @brief The virtual function fills a rectangle by using the specified brush. 
+*  
+*/
+            void fill(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect,devicePlot* hdc);
    
    
    

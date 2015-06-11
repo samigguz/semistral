@@ -1,8 +1,9 @@
-/* 
- * File:   devicePlot.cpp
- * Author: 
- * 
- * Created on 2 Июнь 2015 г., 23:56
+/**
+ * @file   devicePlot.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    devicePlot.h for declaration.
  */
 #include <iostream>
 #include "devicePlot.h"
@@ -14,12 +15,11 @@ void devicePlot::print(void)
 	  {
 	  for (int j=0;j<maxX;j++)
 	  {
-	  	cout<<array[i][j]<<" ";
+	  	cout<<array[i][j]<<"";
 	  }
 	  cout<<endl;
 	 }
-     	
-	
+    	
 }
 
 void devicePlot::printInfo()

@@ -1,8 +1,9 @@
-/* 
- * File:   Ellipse.h
- * Author: 
- *
- * Created on 3 Июнь 2015 г., 0:54
+/**
+ * @file   Ellipse.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
+ * @see    Ellipse.cpp for implementation.
  */
 
 #ifndef ELLIPSE_H
@@ -14,16 +15,48 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @brief Class that draws an arbitrary ellipse on the 2D-Canvas.
+ * 
+ * The Ellipse class represents an ellipse defined by a bounding rectangle.
+ * It is formed from base class plotPoint.
+ * Class has a derived class Circle.
+ * 
+ */
 
 class Ellipse : public plotPoint {
 protected:
      int x1,y1,x2,y2;  
-     double a,b,e,p,c;
+     double a;///<  major axis
+     double b;///<  minor axis
+     double e;///< eccentricity   
+     double f;///<foci, linear eccentricity
+     double p;
      int STEP;
 public:
-    Ellipse(int,int,int,int);
-    void show (devicePlot *);  
-    void fill(devicePlot *,char);
+/**
+*   @brief Basic constructor with arguments.
+*   
+*  @param nLeftRect The x-coordinate, in logical coordinates, of the upper-left corner of the bounding rectangle.
+*  @param nTopRect The y-coordinate, in logical coordinates, of the upper-left corner of the bounding rectangle.
+*  @param nRightRect The x-coordinate, in logical coordinates, of the lower-right corner of the bounding rectangle.
+*  @param nBottomRect The y-coordinate, in logical coordinates, of the lower-right corner of the bounding rectangle.
+ */
+    Ellipse(int nLeftRect,int nTopRect,int nRightRect,int nBottomRect );
+/**
+*   @brief Virtual function that displays the ellipse on the 2D-Canvas.
+* 
+*   @param[in] hdc Handle to a device context.
+*   
+*/
+    virtual void show (devicePlot *hdc);  
+/**
+*  @brief The virtual function fills an ellipse by using the specified brush. 
+*   
+* @param[in] hdc Handle to a device context.
+* @param[in] symbol A handle to the brush used to fill the ellipse.
+*/
+    void fill(devicePlot *hdc,char symbol);
 };
 
 

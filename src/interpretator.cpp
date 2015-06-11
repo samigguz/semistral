@@ -1,8 +1,9 @@
-/* 
- * File:   interpretator.cpp
- * Author: andrew
- * 
- * Created on 4 Июнь 2015 г., 2:36
+/**
+ * @file   interpretator.cpp
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function implementation.
+ * @see    interpretator.h for declaration.
  */
 #include <string>
 #include <fstream>
@@ -19,7 +20,6 @@
 
 using namespace std;
 
-//vychozi nastaveni Brush na mezeru a Pen na hvezdicku
 interpretator::interpretator():Brush(' '),Pen('*'),numberOfLine(0) {
 }
 
@@ -53,7 +53,7 @@ void interpretator::doIt() {
       getline(fin,s);
       numberOfLine++;
       line=s;
-      //del comments
+      ///<del comments
       size_t pos = s.find_first_of("//");
       if ( pos != string::npos) {
           s.erase(pos, s.size()-pos);
@@ -102,7 +102,7 @@ void interpretator::doIt() {
 
 devicePlot* interpretator::set_devicePlot(vector<string> a) {
   cout << a.size() << endl;  
-  if ( a.size() != 6) { //jestlize nema tvar "setSize(number,number)"
+  if ( a.size() != 6) { 
       throw CCoordException(line,numberOfLine);
       return NULL;
   }  

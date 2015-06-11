@@ -1,17 +1,18 @@
-/* 
- * File:   devicePlot.h
- * Author: 
- *
- * Created on 2 Июнь 2015 г., 23:56
+/**
+ * @file   devicePlot.h
+ * @author Samigullina Guzel
+ * @date   07 June 2015
+ * @brief  File containing function declaration.
+ * @see    devicePlot.cpp for implementation.
  */
 
 
 
 #ifndef DEVICEPLOT_H
 #define	DEVICEPLOT_H
-
 #include <iostream>
 using namespace std;
+
 
 
 class devicePlot {
