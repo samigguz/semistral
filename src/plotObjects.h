@@ -11,12 +11,10 @@
 #include <iostream>
 #include "devicePlot.h"
 
-
+//базовый абстрактный класс
 class plotObjects {
 public:
     plotObjects();
-    plotObjects(const plotObjects& orig);
-    virtual ~plotObjects();
     virtual void show( devicePlot *hdc ){};
     
 private:

@@ -9,10 +9,3 @@
 
 plotObjects::plotObjects() {
 }
-
-plotObjects::plotObjects(const plotObjects& orig) {
-}
-
-plotObjects::~plotObjects() {
-}
-
