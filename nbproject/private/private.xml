@@ -7,25 +7,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Rectangle.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/devicePlot.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/deviceColorPlot.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Line.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Rectangle.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/example1.guz</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Line.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/interpretator.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/parser.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/painter.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Ellipse.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotObjects.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotPoint.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Circle.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/parser.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/Circle.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/deviceColorPlot.h</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/interpretator.cpp</file>
-            <file>file:/C:/Users/Гузель/Documents/NetBeansProjects/semistral/src/plotPoint.h</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/deviceColorPlot.cpp</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/interpretator.h</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/main.cpp</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/deviceColorPlot.h</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/devicePlot.h</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/Rectangle.h</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/devicePlot.cpp</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/Rectangle.cpp</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/src/interpretator.cpp</file>
+            <file>file:/mnt/sda3/andrew/NetBeansProjects/semistral/example_1</file>
         </group>
     </open-files>
 </project-private>

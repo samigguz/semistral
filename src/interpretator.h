@@ -13,7 +13,9 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include "devicePlot.h"
+#include "plotPoint.h"
 
 using namespace std;
 
@@ -22,7 +24,7 @@ using namespace std;
 class interpretator {
 public:
     interpretator();
-    interpretator(std::string fNameIn, std::string fNameOut);
+    interpretator(string fNameIn, string fNameOut);
     interpretator(const interpretator& orig);
     void set_size(int,int);
     void doIt();
@@ -30,6 +32,7 @@ public:
     devicePlot* set_devicePlot( vector<string> );
     
     void check_Limits(int x, int y );
+    void init_Lang();
  
 /**
 *   @brief Several set methods, which use the same parametrs.
@@ -39,6 +42,10 @@ public:
 *   @throw CCoordException When in the input file was used the wrong data format.
 *   
 */ 
+    void set_beginPoliLine( devicePlot*, vector<string> );
+    void set_showPoliLine( devicePlot*, vector<string> );
+    void set_poliLineAdd( devicePlot*, vector<string> );
+    
     void set_Line( devicePlot*, vector<string> );
     void set_Rectangle( devicePlot*, vector<string> );
     void set_Point(devicePlot*, vector<string>);
@@ -64,8 +71,11 @@ private:
     char Pen;
     int numberOfLine;
     string line;
-    std::string fileNameIn, fileNameOut;
+    string fileNameIn, fileNameOut;
     bool isDigit(string &);
+    map <string, void (interpretator::*)(devicePlot*, vector<string>)> lang;
+    
+    vector<plotPoint>  poliPoints;
 };
 
 #endif	/* INTERPRETATOR_H */

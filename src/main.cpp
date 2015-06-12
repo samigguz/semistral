@@ -22,8 +22,11 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    
+   /* 
     interpretator mainInterpretator("examples/Mikie_mouse","example1.out");
+    mainInterpretator.doIt();
+    */
+    interpretator mainInterpretator("examples/poliline.guz","examples/poliline.out");
     mainInterpretator.doIt();
     
         /*painter canvas;

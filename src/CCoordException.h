@@ -25,6 +25,7 @@ class CCoordException
 	public:
             
 	    CCoordException (const string & a,int number );
+            CCoordException (const string & a,int number, const string &b );
             /*
                 string tmp;
     for (unsigned i=0;i<a.size();i++)
@@ -42,6 +43,7 @@ class CCoordException
             
         private:
             string Line;/**< Line with the wrong data format. */
+            string addInformation;
 };
 
 

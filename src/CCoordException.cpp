@@ -21,6 +21,19 @@ CCoordException::CCoordException (const string & a,int number ){
 cout << "Error in line "<<number<<" \""<<Line<<'\"' <<'.'<<endl;
 
 }
+
+CCoordException::CCoordException (const string & a,int number, const string & b ){
+
+    string tmp;
+    for (unsigned i=0;i<a.size();i++)
+        if (a[i]==' ') continue;
+        else tmp+=a[i];
+    
+ Line=tmp;
+cout << "Error in line "<<number<<" \""<<Line<<'\"' <<'.  '<< b <<endl;
+
+}
+
 /*ostream & operator << ( ostream &os, const CCoordException &exp )
 {
     

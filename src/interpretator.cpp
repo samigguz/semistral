@@ -20,13 +20,40 @@
 
 using namespace std;
 
+//vychozi nastaveni Brush na mezeru a Pen na hvezdicku
 interpretator::interpretator():Brush(' '),Pen('*'),numberOfLine(0) {
+    this->init_Lang();
 }
 
-interpretator::interpretator(std::string fNameIn, std::string fNameOut):Brush(' '),Pen('*'),numberOfLine(0) {
+interpretator::interpretator(string fNameIn, string fNameOut):Brush(' '),Pen('*'),numberOfLine(0) {
     this->fileNameIn = fNameIn;
     this->fileNameOut= fNameOut;
+    this->init_Lang();
 }
+
+void interpretator::init_Lang(){
+    //lang["setSize"]=set_devicePlot;
+    lang["useBrush"]=&interpretator::set_Brush;
+    lang["usePen"]=&interpretator::set_Pen;
+    lang["setColor"]=&interpretator::set_setColor;
+        
+    lang["clearBrush"]=&interpretator::set_clearBrush;
+    lang["Line"]=&interpretator::set_Line;
+    lang["Rectangle"]=&interpretator::set_Rectangle;
+    lang["Square"]=&interpretator::set_Rectangle;
+        
+    lang["Point"]=&interpretator::set_Point;
+    lang["Ellipse"]=&interpretator::set_Ellipse;
+    lang["Circle"]=&interpretator::set_Ellipse;
+    lang["clearPen"]=&interpretator::set_clearPen;
+    
+    //PolilIne
+    lang["beginPoliline"]=&interpretator::set_beginPoliLine;
+    lang["showPoliline"]=&interpretator::set_showPoliLine;
+    lang["poliLineAdd"]=&interpretator::set_poliLineAdd;
+    
+}
+
 
 void interpretator::check_Limits(int X, int Y) {
     string sout = line + "---OutOfRange";
@@ -34,6 +61,75 @@ void interpretator::check_Limits(int X, int Y) {
 }
 
 void interpretator::doIt() {
+    ifstream fin;
+    fin.open(fileNameIn.c_str());
+    ofstream fout;
+    fout.open(fileNameOut.c_str());
+    fout << "Hi" << endl;
+    
+    parser par;
+    par.initTerms();
+    
+    devicePlot *hdc;
+    
+    
+    bool start = true;
+    
+    while ( !fin.eof()) {
+      string s;
+      getline(fin,s);
+      numberOfLine++;
+      line=s;
+      ///<del comments
+      size_t pos = s.find_first_of("//");
+      if ( pos != string::npos) {
+          s.erase(pos, s.size()-pos);
+          cout <<s << endl;
+      }
+      vector<string> tokens = par.doParsing(s);
+      if ( tokens.size() == 0) continue;
+      
+      if ( start) { 
+         if (  tokens[0] != "setSize") {
+          cout << " Error! Not set size" << endl;
+          exit;
+         } else {
+             start = false;
+             hdc = this->set_devicePlot( tokens );
+             if ( hdc == NULL ) {
+                 throw CCoordException(line,numberOfLine," not defined size ");
+                 //cout << "error init devicePlot " << endl;
+            //     exit;
+             }
+         }
+      }  else {
+        
+          if ( lang.find(tokens[0]) != lang.end() ) {
+            //если есть такой токен то вызываем ссответсвующую функцию
+            (this->*lang[tokens[0]])(hdc, tokens);  
+              
+          } else {
+            //если токен не известен вызываем ошибку  
+            throw CCoordException(line,numberOfLine," not defined");   
+          }
+        
+      } 
+      
+      
+    }
+    
+    hdc->print();
+    
+    fout.close();
+    fin.close();
+    
+}
+
+
+
+/*
+
+void interpretator::doIt2() {
     ifstream fin;
     fin.open(fileNameIn.c_str());
     ofstream fout;
@@ -87,7 +183,8 @@ void interpretator::doIt() {
         
         if ( tokens[0] == "Point") set_Point( hdc, tokens);
         if ( tokens[0] == "Ellipse" || tokens[0] == "Circle" ) set_Ellipse( hdc, tokens);
-        if ( tokens[0] == "clearPen" || tokens[0] == "Circle" ) set_clearPen( hdc, tokens);
+        if ( tokens[0] == "clearPen" ) set_clearPen( hdc, tokens);
+        
       } 
       
       
@@ -99,7 +196,7 @@ void interpretator::doIt() {
     fin.close();
     
 }
-
+*/
 devicePlot* interpretator::set_devicePlot(vector<string> a) {
   cout << a.size() << endl;  
   if ( a.size() != 6) { 
@@ -125,6 +222,63 @@ interpretator::interpretator(const interpretator& orig) {
 
 interpretator::~interpretator() {
 }
+
+
+
+
+void interpretator::set_beginPoliLine( devicePlot* hdc, vector<string> a)
+{ 
+    
+    if ( a.size() != 1) {
+        throw CCoordException(line,numberOfLine);
+    }    
+    
+    this->poliPoints.clear();
+    
+}
+
+void interpretator::set_showPoliLine( devicePlot* hdc, vector<string> a)
+{ 
+    
+    if ( a.size() != 1) {
+        throw CCoordException(line,numberOfLine);
+    }    
+    
+   if ( this->poliPoints.size() == 1 )  {
+       //особый случай когда одна точка
+       poliPoints[0].show( hdc );
+   }
+    
+   if ( this->poliPoints.size() > 1 )  { 
+     Line l;
+     for( int i=0; i<poliPoints.size()-1;i++) {
+        l.setCoordinates( poliPoints[i].getX(), 
+                          poliPoints[i].getY(), 
+                          poliPoints[i+1].getX(), 
+                          poliPoints[i+1].getY()
+                        ); 
+       l.show(hdc); 
+     }
+       
+   }
+    
+}
+
+void interpretator::set_poliLineAdd( devicePlot* hdc, vector<string> a)
+{ 
+    cout << " poliadd " << poliPoints.size() << endl; 
+    if ( a.size() != 6) {
+        throw CCoordException(line,numberOfLine," bad syntax");
+    }    
+    int x =  atoi( a[2].c_str());
+    int y =  atoi( a[4].c_str());
+    plotPoint b(x,y);
+    poliPoints.push_back( b );
+    
+}
+
+
+
 
 void interpretator::set_Brush( devicePlot* hdc, vector<string> a)
 { 
