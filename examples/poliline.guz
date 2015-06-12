@@ -1,0 +1,18 @@
+setSize(40,40)
+beginPoliline
+poliLineAdd(1,1)
+poliLineAdd(5,5)
+poliLineAdd(4,5)
+showPoliline  // рисует текущие точки
+poliLineAdd(20,20)  // можно добавить еще точек
+showPoliline  
+setColor(3)
+beginPoliline // Начинает новую и стирает старую
+poliLineAdd(10,0)
+poliLineAdd(10,30)
+poliLineAdd(1,3)
+poliLineAdd(20,10)
+poliLineAdd(10,20)
+poliLineAdd(20,5)
+poliLineAdd(10,0)
+showPoliline

@@ -25,7 +25,8 @@ public:
     virtual ~plotPoint();
     
     virtual void show( devicePlot *hdc );
-    
+    int getX() {return X;}
+    int getY() {return Y;}
     
 };
 

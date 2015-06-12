@@ -53,6 +53,7 @@
     <itemPath>examples/Mikie_mouse</itemPath>
     <itemPath>examples/example2</itemPath>
     <itemPath>example_1</itemPath>
+    <itemPath>examples/poliline.guz</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -71,6 +72,8 @@
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -150,6 +153,8 @@
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
       </item>
