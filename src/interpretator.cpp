@@ -66,19 +66,19 @@ void interpretator::doIt() {
     fin.open(fileNameIn.c_str());
     if (!fin.is_open())
     {
-        error="Couldn't open the file ";
-        error+=fileNameIn;
+        error="Couldn't open the file \"";
+
+        error+=fileNameIn;error+="\".";
         throw CCoordException(error);
     }
     ofstream fout;
     fout.open(fileNameOut.c_str());
     if (!fout.is_open())
     {
-        error="Couldn't open the file ";
-        error+=fileNameOut;
+        error="Couldn't open the file \"";
+        error+=fileNameOut;error+="\".";
         throw CCoordException(error);
     }
-    fout << "Hi" << endl;
     
     parser par;
     par.initTerms();

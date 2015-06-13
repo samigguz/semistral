@@ -52,12 +52,12 @@ void deviceColorPlot::print(ofstream & fout)
 	  fout<<endl;
 	 }
      	
-   fout << this->default_console << endl;	
+   fout << this->default_console << endl;
+   cout << this->default_console << endl;	
 }
 
 void deviceColorPlot::putPixel(int X, int Y, char znak) {
-       // cout << "a" << Color << endl;
-		  if (  X >=0 && X < maxX && Y>=0 && Y<maxY )
+       		  if (  X >=0 && X < maxX && Y>=0 && Y<maxY )
 		  { 
 		    array[Y][X]=znak;
                     colors[Y * maxX + X] = Color;

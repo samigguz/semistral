@@ -14,11 +14,6 @@
 
 using namespace std;
 
-/**
- * @brief Class that splits the string into logical parts.
- * 
- */
-
 class parser {
     
 private:

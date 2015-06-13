@@ -29,7 +29,14 @@ protected:
      int x1,y1,x2,y2;  
      double a;///<  major axis
      double b;///<  minor axis
-     double e;///< eccentricity    
+     double e;///< eccentricity   
+ /**
+ *  The distance to the focal point from the center of the ellipse
+ * is sometimes called the linear eccentricity, f, of the ellipse.
+ * 
+ * Due to the Pythagorean theorem:
+ * \f$f^2 = \sqrt{(a)^2+(b)^2}\f$.
+ */  
      double f;///<foci, linear eccentricity
      double p;
      int STEP;
