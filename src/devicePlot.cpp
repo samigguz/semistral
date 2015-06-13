@@ -7,27 +7,37 @@
  */
 #include <iostream>
 #include "devicePlot.h"
-
+#include <map>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <ctype.h>
 using namespace std;
-void devicePlot::print(void)
+devicePlot::devicePlot():Brush(' '),Pen('*')
+{
+     maxX=maxY=0;
+}
+
+void devicePlot::setColor(string &a)
+{           
+    if (map_colors.find(a)!=map_colors.end()) Color=map_colors[a];
+    else Color=atoi(a.c_str());
+}
+        
+void devicePlot::print(ofstream & fout)
 {
 	for(int i=0;i<maxY;i++)
 	  {
 	  for (int j=0;j<maxX;j++)
 	  {
-	  	cout<<array[i][j]<<"";
+	  	fout<<array[i][j]<<"";
 	  }
-	  cout<<endl;
+	  fout<<endl;
 	 }
     	
 }
 
-void devicePlot::printInfo()
-{
-  cout << "info " << maxX << "  " << maxY << endl;	
-     	
-	
-}
+
 
 devicePlot::devicePlot(int X,int Y):maxX(X),maxY(Y),Brush(' '),Pen('*')
 		{
@@ -42,14 +52,37 @@ devicePlot::devicePlot(int X,int Y):maxX(X),maxY(Y),Brush(' '),Pen('*')
 	                  array[i][j]=' ';
 	                }
 			
+     map_colors["Black"]=0;
+     map_colors["Green"]=1;
+     map_colors["Brown"]=2;
+     map_colors["Blue"]=3;
+     map_colors["Magenta"]=4;
+     map_colors["Cyan"]=5;
+     map_colors["Lightgray"]=6;
 		}
 
   void devicePlot::putPixel(int X, int Y, char znak) {
-                    cout << "b" << endl;
+                    //cout << "b" << endl;
 		  if (  X >=0 && X < maxX && Y>=0 && Y<maxY )
 		  { 
 		    array[Y][X]=znak;
 		  }  
 		  
 		}
+  
+
+  
+  devicePlot::~devicePlot()
+  {
+      
+      for (int i=0;i<maxY;i++)
+      {
+          delete [] array[i];
+      }
+      
+      delete [] array;
+      
+      
+  }
+
   

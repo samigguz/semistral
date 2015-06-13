@@ -29,7 +29,7 @@ protected:
      int x1,y1,x2,y2;  
      double a;///<  major axis
      double b;///<  minor axis
-     double e;///< eccentricity   
+     double e;///< eccentricity    
      double f;///<foci, linear eccentricity
      double p;
      int STEP;

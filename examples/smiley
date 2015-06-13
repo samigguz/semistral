@@ -1,21 +1,21 @@
 // example
-setSize(50,100)  // size
-
-
+setSize(50,50)  // size
+ 
+   
     //             
     usePen('.')
-    setColor(1)
-    useBrush('@')
-    //Rectangle(1,5,20,20) 
-    clearBrush
-    usePen('*')
-    setColor(2)
+
+    useBrush('.')
+    usePen('+')
+    setColor("Cyan")
     Ellipse(10,4,34,22)
     
+    usePen('~')
+    setColor(0)
     Ellipse(16,8,21,12)
     Ellipse(24,8,29,12)
     usePen('@')
-    //Ellipse(14,15,30,18)
+    setColor(5)
     usePen('"')
     Line (1,11,8,11)
     Line (1,10,7,10)
@@ -46,3 +46,6 @@ setSize(50,100)  // size
     Line (35,5,36,5)
     Line (41,5,42,5)
     Line (44,5,45,5)
+     
+
+      

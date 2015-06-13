@@ -14,20 +14,28 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @brief Class that supports color drawing.
+ * 
+ * Class must prepare the device for drawing operations 
+ * (such as selecting a line color and a brush color).
+ * The class include a palette for defining the set of available colors and deviceColorPlot#default_console.
+ * 
+ */
+
 class deviceColorPlot: public devicePlot {
 public:
     deviceColorPlot();
     deviceColorPlot(int X,int Y);
-    deviceColorPlot(const deviceColorPlot& orig);
-    virtual ~deviceColorPlot();
     
-    void print(void);
+    void print(ofstream &);
     void putPixel(int X, int Y);
     void putPixel(int X, int Y, char );
     
 protected:
    string default_console;
    int *colors;
+ 
 };
 
 #endif	/* DEVICECOLORPLOT_H */

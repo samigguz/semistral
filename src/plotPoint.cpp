@@ -17,3 +17,4 @@ plotPoint::~plotPoint() {
   void plotPoint::show( devicePlot *hdc ){
         hdc->putPixel(X,Y,hdc->Pen);
     };
+    

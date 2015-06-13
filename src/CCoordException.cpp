@@ -10,34 +10,32 @@
 #include <iostream>
 #include <string>
 using namespace std;
+CCoordException::CCoordException (const string & a)
+{
+    cout<<a<<endl;
+}
 CCoordException::CCoordException (const string & a,int number ){
 
-    string tmp;
-    for (unsigned i=0;i<a.size();i++)
-        if (a[i]==' ') continue;
+    string tmp="";
+    for (unsigned i=0;i<a.size()-1;i++)
+        if (a[i]==' ' || a[i]=='\n') continue;
         else tmp+=a[i];
     
  Line=tmp;
-cout << "Error in line "<<number<<" \""<<Line<<'\"' <<'.'<<endl;
+ cout << "Line:"<<number<<": error : bad syntax in \"" <<Line<<"\"."<<endl;
 
 }
 
 CCoordException::CCoordException (const string & a,int number, const string & b ){
 
     string tmp;
-    for (unsigned i=0;i<a.size();i++)
+    for (unsigned i=0;i<a.size()-1;i++)
         if (a[i]==' ') continue;
         else tmp+=a[i];
     
  Line=tmp;
-cout << "Error in line "<<number<<" \""<<Line<<'\"' <<'.  '<< b <<endl;
+ cout << "Line:"<<number<<": error : "<<b<<" in \"" <<Line<<"\"."<<endl;
 
 }
 
-/*ostream & operator << ( ostream &os, const CCoordException &exp )
-{
-    
-    os << "Error in line "<<" \""<<exp.Line<<'\"' <<'.'<<endl;
-    return os;
-}*/
 

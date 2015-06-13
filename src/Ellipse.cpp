@@ -77,8 +77,8 @@ void Ellipse::fill(devicePlot* hdc, char brush)
             hdc->putPixel( int( (X-f)+dx+0.5), int(Y-dy+0.5) );
 	    
             hdc->Pen=brush;
-            l.setCoordinates((X-f)+dx+0.5,Y+dy+0.5,(X+f)-dx+0.5,Y+dy+0.5);
-            k.setCoordinates((X+f)-dx+0.5,Y-dy+0.5,(X-f)+dx+0.5,Y-dy+0.5);
+            l.setCoordinates(int((X-f)+dx+0.5),int(Y+dy+0.5),int((X+f)-dx+0.5),int(Y+dy+0.5));
+            k.setCoordinates(int((X+f)-dx+0.5),int(Y-dy+0.5),int((X-f)+dx+0.5),int(Y-dy+0.5));
             l.show(hdc);
             k.show(hdc);
             hdc->Pen=ptr;

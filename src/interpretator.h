@@ -19,13 +19,16 @@
 
 using namespace std;
 
+/**
+ * @brief Class that defines a set of graphic objects and their associated attributes,that affect output.
+ * 
+ */
 
 
 class interpretator {
 public:
     interpretator();
     interpretator(string fNameIn, string fNameOut);
-    interpretator(const interpretator& orig);
     void set_size(int,int);
     void doIt();
     
@@ -65,16 +68,14 @@ public:
     void set_setColor( devicePlot* hdc, vector<string>);
     
     virtual ~interpretator();
+    
 private:
     int maxX,maxY;
-    char Brush;
-    char Pen;
     int numberOfLine;
     string line;
     string fileNameIn, fileNameOut;
     bool isDigit(string &);
     map <string, void (interpretator::*)(devicePlot*, vector<string>)> lang;
-    
     vector<plotPoint>  poliPoints;
 };
 

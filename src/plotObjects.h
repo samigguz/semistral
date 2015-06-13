@@ -11,7 +11,10 @@
 #include <iostream>
 #include "devicePlot.h"
 
-//базовый абстрактный класс
+/**
+ * @brief Abstract base class.
+ * 
+ */
 class plotObjects {
 public:
     plotObjects();

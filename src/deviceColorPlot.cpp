@@ -9,30 +9,27 @@
 #include "deviceColorPlot.h"
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include <sstream>
 #include <string>
+
 using namespace std;
 
 deviceColorPlot::deviceColorPlot():devicePlot() {
      this->default_console = "\033[0m";
      Color=0;
+     
 }
 
 deviceColorPlot::deviceColorPlot(int X,int Y):devicePlot(X,Y){
     this->default_console = "\033[0m";
     colors = new int[maxX * maxY];
     for (int i=0; i< maxX * maxY; i++)
-       colors[i]=0;  
+    colors[i]=0;  
     Color=0;
 }
 
-deviceColorPlot::deviceColorPlot(const deviceColorPlot& orig) {
-}
-
-deviceColorPlot::~deviceColorPlot() {
-}
-
-void deviceColorPlot::print(void)
+void deviceColorPlot::print(ofstream & fout)
 {
     
     stringstream ss;
@@ -50,12 +47,12 @@ void deviceColorPlot::print(void)
 	  {
                 int c = colors[i * maxX+j];
                 if ( c >=0 && c < 8) cout<< col[c];
-	  	cout<<array[i][j]<<"";
+	  	fout<<array[i][j]<<"";
 	  }
-	  cout<<endl;
+	  fout<<endl;
 	 }
      	
-   cout << this->default_console << endl;	
+   fout << this->default_console << endl;	
 }
 
 void deviceColorPlot::putPixel(int X, int Y, char znak) {
@@ -68,3 +65,5 @@ void deviceColorPlot::putPixel(int X, int Y, char znak) {
     }
 
  void deviceColorPlot::putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }
+
+ 

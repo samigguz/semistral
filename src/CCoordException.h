@@ -24,6 +24,7 @@ class CCoordException
 {
 	public:
             
+            CCoordException (const string & a);
 	    CCoordException (const string & a,int number );
             CCoordException (const string & a,int number, const string &b );
             /*

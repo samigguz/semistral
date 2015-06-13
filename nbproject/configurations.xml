@@ -11,10 +11,8 @@
       <itemPath>src/Rectangle.cpp</itemPath>
       <itemPath>src/deviceColorPlot.cpp</itemPath>
       <itemPath>src/devicePlot.cpp</itemPath>
-      <itemPath>example1.guz</itemPath>
       <itemPath>src/interpretator.cpp</itemPath>
       <itemPath>src/main.cpp</itemPath>
-      <itemPath>src/painter.cpp</itemPath>
       <itemPath>src/parser.cpp</itemPath>
       <itemPath>src/plotObjects.cpp</itemPath>
       <itemPath>src/plotPoint.cpp</itemPath>
@@ -30,7 +28,6 @@
       <itemPath>src/deviceColorPlot.h</itemPath>
       <itemPath>src/devicePlot.h</itemPath>
       <itemPath>src/interpretator.h</itemPath>
-      <itemPath>src/painter.h</itemPath>
       <itemPath>src/parser.h</itemPath>
       <itemPath>src/plotObjects.h</itemPath>
       <itemPath>src/plotPoint.h</itemPath>
@@ -50,10 +47,21 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Файлы тестов"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Важные файлы"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
     <itemPath>examples/Mikie_mouse</itemPath>
     <itemPath>examples/example2</itemPath>
-    <itemPath>example_1</itemPath>
     <itemPath>examples/poliline.guz</itemPath>
+    <itemPath>examples/smiley</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -65,15 +73,13 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="example1.guz" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="example_1" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="examples/smiley" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -108,10 +114,6 @@
       <item path="src/interpretator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/painter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/parser.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -146,15 +148,13 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="example1.guz" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="example_1" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="examples/smiley" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/CCoordException.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -189,10 +189,6 @@
       <item path="src/interpretator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/painter.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="src/painter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/parser.cpp" ex="false" tool="1" flavor2="0">
       </item>

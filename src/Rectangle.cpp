@@ -36,5 +36,7 @@ void Rectangle::fill(int x1,int y1,int x2,int y2,devicePlot* hdc)
    	 b.show(hdc);
    	 c.show(hdc);
    	 d.show(hdc);
-   }     
+   }
+ 
+   
       

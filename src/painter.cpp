@@ -25,3 +25,4 @@ void painter::paint(plotObjects* a) {
 painter::~painter() {
 }
 
+

@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <ctype.h>
+#include <string>
 #include "interpretator.h"
 #include "parser.h"
 #include "devicePlot.h"
@@ -21,11 +22,11 @@
 using namespace std;
 
 //vychozi nastaveni Brush na mezeru a Pen na hvezdicku
-interpretator::interpretator():Brush(' '),Pen('*'),numberOfLine(0) {
+interpretator::interpretator():numberOfLine(0) {
     this->init_Lang();
 }
 
-interpretator::interpretator(string fNameIn, string fNameOut):Brush(' '),Pen('*'),numberOfLine(0) {
+interpretator::interpretator(string fNameIn, string fNameOut):numberOfLine(0) {
     this->fileNameIn = fNameIn;
     this->fileNameOut= fNameOut;
     this->init_Lang();
@@ -47,7 +48,7 @@ void interpretator::init_Lang(){
     lang["Circle"]=&interpretator::set_Ellipse;
     lang["clearPen"]=&interpretator::set_clearPen;
     
-    //PolilIne
+    //Poliline
     lang["beginPoliline"]=&interpretator::set_beginPoliLine;
     lang["showPoliline"]=&interpretator::set_showPoliLine;
     lang["poliLineAdd"]=&interpretator::set_poliLineAdd;
@@ -56,15 +57,27 @@ void interpretator::init_Lang(){
 
 
 void interpretator::check_Limits(int X, int Y) {
-    string sout = line + "---OutOfRange";
-    if (X>=maxX || X<0 || Y>=maxY || Y<0) throw CCoordException(sout,numberOfLine);
+    if (X>=maxX || X<0 || Y>=maxY || Y<0) throw CCoordException(line,numberOfLine,"---OutOfRange");
 }
 
 void interpretator::doIt() {
     ifstream fin;
+    string error;
     fin.open(fileNameIn.c_str());
+    if (!fin.is_open())
+    {
+        error="Couldn't open the file ";
+        error+=fileNameIn;
+        throw CCoordException(error);
+    }
     ofstream fout;
     fout.open(fileNameOut.c_str());
+    if (!fout.is_open())
+    {
+        error="Couldn't open the file ";
+        error+=fileNameOut;
+        throw CCoordException(error);
+    }
     fout << "Hi" << endl;
     
     parser par;
@@ -84,22 +97,18 @@ void interpretator::doIt() {
       size_t pos = s.find_first_of("//");
       if ( pos != string::npos) {
           s.erase(pos, s.size()-pos);
-          cout <<s << endl;
       }
       vector<string> tokens = par.doParsing(s);
       if ( tokens.size() == 0) continue;
       
       if ( start) { 
          if (  tokens[0] != "setSize") {
-          cout << " Error! Not set size" << endl;
-          exit;
+          throw CCoordException("Error! Not set size.");
          } else {
              start = false;
              hdc = this->set_devicePlot( tokens );
              if ( hdc == NULL ) {
                  throw CCoordException(line,numberOfLine," not defined size ");
-                 //cout << "error init devicePlot " << endl;
-            //     exit;
              }
          }
       }  else {
@@ -118,87 +127,15 @@ void interpretator::doIt() {
       
     }
     
-    hdc->print();
+    hdc->print(fout);
     
     fout.close();
     fin.close();
     
 }
 
-
-
-/*
-
-void interpretator::doIt2() {
-    ifstream fin;
-    fin.open(fileNameIn.c_str());
-    ofstream fout;
-    fout.open(fileNameOut.c_str());
-    fout << "Hi" << endl;
-    
-    parser par;
-    par.initTerms();
-    
-    devicePlot *hdc;
-    
-    
-    bool start = true;
-    
-    while ( !fin.eof()) {
-      string s;
-      getline(fin,s);
-      numberOfLine++;
-      line=s;
-      ///<del comments
-      size_t pos = s.find_first_of("//");
-      if ( pos != string::npos) {
-          s.erase(pos, s.size()-pos);
-          cout <<s << endl;
-      }
-      vector<string> tokens = par.doParsing(s);
-      if ( tokens.size() == 0) continue;
-      
-      if ( start) { 
-         if (  tokens[0] != "setSize") {
-          cout << " Error! Not set size" << endl;
-          exit;
-         } else {
-             start = false;
-             hdc = this->set_devicePlot( tokens );
-             if ( hdc == NULL ) {
-                 throw CCoordException(line,numberOfLine);
-                 //cout << "error init devicePlot " << endl;
-                 exit;
-             }
-         }
-      }  else {
-        
-        if ( tokens[0] == "useBrush") set_Brush( hdc, tokens);
-        if ( tokens[0] == "usePen") set_Pen( hdc, tokens);
-        if ( tokens[0] == "setColor") set_setColor( hdc, tokens);
-        
-        if ( tokens[0] == "clearBrush") set_clearBrush( hdc, tokens);
-        if ( tokens[0] == "Line") set_Line( hdc, tokens);
-        if ( tokens[0] == "Rectangle" ||tokens[0] == "Square" ) set_Rectangle( hdc, tokens);
-        
-        if ( tokens[0] == "Point") set_Point( hdc, tokens);
-        if ( tokens[0] == "Ellipse" || tokens[0] == "Circle" ) set_Ellipse( hdc, tokens);
-        if ( tokens[0] == "clearPen" ) set_clearPen( hdc, tokens);
-        
-      } 
-      
-      
-    }
-    
-    hdc->print();
-    
-    fout.close();
-    fin.close();
-    
-}
-*/
 devicePlot* interpretator::set_devicePlot(vector<string> a) {
-  cout << a.size() << endl;  
+    
   if ( a.size() != 6) { 
       throw CCoordException(line,numberOfLine);
       return NULL;
@@ -217,8 +154,6 @@ void interpretator::set_size(int X,int Y)
     maxY=Y;
 }
 
-interpretator::interpretator(const interpretator& orig) {
-}
 
 interpretator::~interpretator() {
 }
@@ -266,7 +201,7 @@ void interpretator::set_showPoliLine( devicePlot* hdc, vector<string> a)
 
 void interpretator::set_poliLineAdd( devicePlot* hdc, vector<string> a)
 { 
-    cout << " poliadd " << poliPoints.size() << endl; 
+    //cout << " poliadd " << poliPoints.size() << endl; 
     if ( a.size() != 6) {
         throw CCoordException(line,numberOfLine," bad syntax");
     }    
@@ -285,11 +220,9 @@ void interpretator::set_Brush( devicePlot* hdc, vector<string> a)
     
     if ( a.size() != 6) {
         throw CCoordException(line,numberOfLine);
-    }    
+    } 
     
-    Brush=a[3][0];
-
-    hdc->Brush=Brush;
+    hdc->Brush=a[3][0];
     
 }
 void interpretator::set_Pen( devicePlot* hdc, vector<string> a)
@@ -298,21 +231,19 @@ void interpretator::set_Pen( devicePlot* hdc, vector<string> a)
         throw CCoordException(line,numberOfLine);
         return;
     }    
-    
-    
-    Pen=a[3][0];
-    
-    hdc->Pen=Pen;
+    hdc->Pen=a[3][0];
 }
 
 void interpretator::set_setColor( devicePlot* hdc, vector<string> a)
 { 
-    if ( a.size() != 4) {
+    if ( a.size() != 4 && a.size()!=6) {
+        
         throw CCoordException(line,numberOfLine);
     }    
-    cout << atoi( a[2].c_str()) << endl;
-    
-    hdc->setColor( atoi( a[2].c_str()) );
+    if (a.size()==6 && (a[2]!="\"" || a[4]!="\""))  throw CCoordException(line,numberOfLine);
+    if (a.size()==4 && a[2].size()>1) throw CCoordException(line,numberOfLine);
+    if (a.size()==4) hdc->setColor( a[2]);
+    else hdc->setColor( a[3]);
 }
 
 void interpretator::set_clearBrush( devicePlot* hdc, vector<string> a)
@@ -321,9 +252,7 @@ void interpretator::set_clearBrush( devicePlot* hdc, vector<string> a)
         throw CCoordException(line,numberOfLine);
         return;
     }    
-    
-    Brush=' ';
-    hdc->Brush=Brush;
+    hdc->Brush=' ';
     
 }
 void interpretator::set_clearPen( devicePlot* hdc, vector<string> a)
@@ -332,18 +261,17 @@ void interpretator::set_clearPen( devicePlot* hdc, vector<string> a)
         throw CCoordException(line,numberOfLine);
         return;
     }    
-    
-    Pen='*';
-    hdc->Pen=Pen;
+  
+    hdc->Pen='*';
     
 }
 void interpretator::set_Line( devicePlot* hdc, vector<string> a){
    
     if ( a.size() != 10) {
-        throw CCoordException(line,numberOfLine);
+        throw CCoordException(line,numberOfLine," bad syntax ");
     }    
     
-    if (!isDigit(a[2]) || !isDigit(a[4]) ||!isDigit(a[6]) ||!isDigit(a[8])) throw CCoordException(line,numberOfLine);
+    if (!isDigit(a[2]) || !isDigit(a[4]) ||!isDigit(a[6]) ||!isDigit(a[8])) throw CCoordException(line,numberOfLine," bad coordinates");
     int x1 = atoi(a[2].c_str());
     int y1 = atoi(a[4].c_str());
     int x2 = atoi(a[6].c_str());
@@ -401,7 +329,6 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     l.show( hdc);
 }
 void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
-    cout << a.size() << endl;
     if ( a.size() != 10) {
         throw CCoordException(line,numberOfLine);
         return;
@@ -435,3 +362,5 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
      return true;
      
  }
+
+ 

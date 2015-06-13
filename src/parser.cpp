@@ -83,4 +83,6 @@ void parser::initTerms() {
    addTerminator("(");
    addTerminator(")");
    addTerminator("\'");
+   addTerminator("\"");
   }
+
