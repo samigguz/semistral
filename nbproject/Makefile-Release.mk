@@ -44,7 +44,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/devicePlot.o \
 	${OBJECTDIR}/src/interpretator.o \
 	${OBJECTDIR}/src/main.o \
-	${OBJECTDIR}/src/painter.o \
 	${OBJECTDIR}/src/parser.o \
 	${OBJECTDIR}/src/plotObjects.o \
 	${OBJECTDIR}/src/plotPoint.o
@@ -118,11 +117,6 @@ ${OBJECTDIR}/src/main.o: src/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
-
-${OBJECTDIR}/src/painter.o: src/painter.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/painter.o src/painter.cpp
 
 ${OBJECTDIR}/src/parser.o: src/parser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

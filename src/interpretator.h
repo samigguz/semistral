@@ -49,6 +49,11 @@ public:
     void set_showPoliLine( devicePlot*, vector<string> );
     void set_poliLineAdd( devicePlot*, vector<string> );
     
+    void set_beginPattern( devicePlot*, vector<string> );
+    void set_endPattern( devicePlot*, vector<string> );
+    void set_copyPattern( devicePlot*, vector<string> );
+    
+    
     void set_Line( devicePlot*, vector<string> );
     void set_Rectangle( devicePlot*, vector<string> );
     void set_Point(devicePlot*, vector<string>);
@@ -70,6 +75,8 @@ public:
     virtual ~interpretator();
     
 private:
+    devicePlot *hdc;
+    
     int maxX,maxY;
     int numberOfLine;
     string line;
@@ -77,6 +84,13 @@ private:
     bool isDigit(string &);
     map <string, void (interpretator::*)(devicePlot*, vector<string>)> lang;
     vector<plotPoint>  poliPoints;
+    
+    //Pattern
+    bool patternMode;
+    devicePlot *saveHDC;
+    devicePlot *patternHDC;
+    int patternMaxX, patternMaxY;
+    
 };
 
 #endif	/* INTERPRETATOR_H */

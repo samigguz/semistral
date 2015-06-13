@@ -24,12 +24,22 @@ using namespace std;
 //vychozi nastaveni Brush na mezeru a Pen na hvezdicku
 interpretator::interpretator():numberOfLine(0) {
     this->init_Lang();
+    
+    this->patternMode = false;
+    this->saveHDC = NULL;
+    this->patternHDC = NULL;
+    
 }
 
 interpretator::interpretator(string fNameIn, string fNameOut):numberOfLine(0) {
     this->fileNameIn = fNameIn;
     this->fileNameOut= fNameOut;
     this->init_Lang();
+    
+    this->patternMode = false;
+    this->saveHDC = NULL;
+    this->patternHDC = NULL;
+    
 }
 
 void interpretator::init_Lang(){
@@ -53,11 +63,20 @@ void interpretator::init_Lang(){
     lang["showPoliline"]=&interpretator::set_showPoliLine;
     lang["poliLineAdd"]=&interpretator::set_poliLineAdd;
     
+    //pattern
+    lang["beginPattern"]=&interpretator::set_beginPattern;
+    lang["endPattern"]=&interpretator::set_endPattern;
+    lang["copyPattern"]=&interpretator::set_copyPattern;
+    
 }
 
 
 void interpretator::check_Limits(int X, int Y) {
+  if ( !this->patternMode ) {  
     if (X>=maxX || X<0 || Y>=maxY || Y<0) throw CCoordException(line,numberOfLine,"---OutOfRange");
+  } else {
+    if (X>=this->patternMaxX || X<0 || Y>=this->patternMaxY || Y<0) throw CCoordException(line,numberOfLine,"---Pattern OutOfRange");  
+  }  
 }
 
 void interpretator::doIt() {
@@ -83,7 +102,7 @@ void interpretator::doIt() {
     parser par;
     par.initTerms();
     
-    devicePlot *hdc;
+    
     
     
     bool start = true;
@@ -107,9 +126,12 @@ void interpretator::doIt() {
          } else {
              start = false;
              hdc = this->set_devicePlot( tokens );
+             
              if ( hdc == NULL ) {
                  throw CCoordException(line,numberOfLine," not defined size ");
              }
+             hdc->tmp = "global";
+             
          }
       }  else {
         
@@ -279,7 +301,7 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     
     check_Limits(x1,y1);
     check_Limits(x2,y2);
-    
+    cout << "line " << hdc->tmp <<endl;
     Line l(x1,y1,x2,y2);
     
     l.show( hdc );
@@ -322,7 +344,7 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     check_Limits(x1,y1);
     check_Limits(x2,y2);
     
-    
+    cout << "ellipse " << hdc->tmp <<endl;
     Ellipse l( x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill( hdc,hdc->Brush);
@@ -344,11 +366,104 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     check_Limits(x1,y1);
     check_Limits(x2,y2);
     
+    cout << "rectangle " << this->hdc->tmp <<endl;
+    
     Rectangle l(x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill(x1,y1,x2,y2,hdc);
     l.show( hdc);
     
+}
+
+
+void interpretator::set_beginPattern( devicePlot* hdc, vector<string> a){
+    //если повторно вызвали но не закрыли предыдущий то ругаемся
+    if ( this->patternMode ) throw CCoordException(line,numberOfLine," active patternMode");
+    
+    if ( a.size() != 6) { 
+      throw CCoordException(line,numberOfLine);
+      
+    }  
+  
+  if (!isDigit(a[2])||!isDigit(a[4])) throw CCoordException(line,numberOfLine);
+  int x = atoi(a[2].c_str());
+  int y = atoi(a[4].c_str());
+  
+  this->patternMaxX = x;
+  this->patternMaxY = y;
+  
+  //удаляем
+  if ( this->patternHDC != NULL) delete this->patternHDC;
+  
+  this->hdc->tmp = "global";
+  //устанавливаем режим работы в патерне
+  this->patternMode = true;
+  //сохраняем контекст устройства
+  this->saveHDC =  this->hdc;
+  
+  cout << hex << this->hdc << endl; 
+  //подменяем глобальный хдс на паттерн
+  this->hdc = new deviceColorPlot(x,y);
+  
+  cout << hex << this->hdc << endl; 
+  
+  cout << " 1 " << this->hdc->tmp << endl;
+   cout << " 2 " << this->saveHDC->tmp << endl;
+  
+  this->hdc->tmp = "pattern";
+  // дублируем patternHDC
+  // в нем хранится патерн
+  this->patternHDC = this->hdc; 
+  
+  cout << " 1 " << this->hdc->tmp << endl;
+   cout << " 2 " << this->saveHDC->tmp << endl;
+  
+}
+
+void interpretator::set_endPattern( devicePlot* hdc, vector<string> a){
+  
+  if ( !this->patternMode ) throw CCoordException(line,numberOfLine,"close not opened Pattern");  
+  
+  if ( a.size() != 1) { 
+      throw CCoordException(line,numberOfLine);
+   }  
+  
+  // воостанавливаем старый
+  this->hdc = this->saveHDC;
+  
+  cout << " 1 " << this->hdc->tmp << endl;
+   cout << " 2 " << this->patternHDC->tmp << endl;
+  
+  this->patternMode = false;
+}
+
+void interpretator::set_copyPattern( devicePlot* hdc, vector<string> a){
+    
+   if ( this->patternMode ) throw CCoordException(line,numberOfLine,"active Pattern mode!");  
+  
+  if ( a.size() != 6) { 
+      throw CCoordException(line,numberOfLine);
+   }  
+   
+   if (!isDigit(a[2])||!isDigit(a[4])) throw CCoordException(line,numberOfLine);
+   int x = atoi(a[2].c_str());
+   int y = atoi(a[4].c_str()); 
+   
+   //cout << " 1 " << hdc->tmp << endl;
+   //cout << " 2 " << patternHDC->tmp << endl;
+  
+   for(int i=0; i < this->patternMaxY; i++) {
+      for(int j=0; j < this->patternMaxX; j++) { 
+         //читаем из патерна 
+          char point = this->patternHDC->getPixel(j,i);
+          this->hdc->Color = this->patternHDC->getColor(j,i);
+          this->hdc->putPixel(x + j,y + i,point);
+       }
+       
+   }
+  
+   
+   
 }
 
 

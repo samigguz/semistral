@@ -36,8 +36,10 @@ void deviceColorPlot::print(ofstream & fout)
     string col[8];
     for (int i=0;i<8;i++) {
         ss.clear();
-        ss << "\33[0;" << 30 + i << "m";
+        //ss << "\33[0;" << 30 + i << "m";
+        ss <<"\33[0;" <<30 + i << "m";
         col[i]=ss.str();
+        //cout << ss.str() <<endl;
     }
     
     
@@ -46,8 +48,8 @@ void deviceColorPlot::print(ofstream & fout)
 	  for (int j=0;j<maxX;j++)
 	  {
                 int c = colors[i * maxX+j];
-                if ( c >=0 && c < 8) cout<< col[c];
-	  	fout<<array[i][j]<<"";
+                if ( c >=0 && c < 8)  fout<< col[c];
+	  	fout<<array[i][j];
 	  }
 	  fout<<endl;
 	 }
@@ -66,4 +68,6 @@ void deviceColorPlot::putPixel(int X, int Y, char znak) {
 
  void deviceColorPlot::putPixel(int X, int Y) { this->putPixel(X,Y,Pen); }
 
+ 
+ int  deviceColorPlot::getColor(int X, int Y) { return colors[Y * maxX + X]; }
  

@@ -32,6 +32,9 @@ public:
     void putPixel(int X, int Y);
     void putPixel(int X, int Y, char );
     
+    
+     int getColor(int X, int Y);
+    
 protected:
    string default_console;
    int *colors;

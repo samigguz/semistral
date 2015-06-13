@@ -12,7 +12,8 @@
 #define	DEVICEPLOT_H
 #include <iostream>
 #include <map>
-#include <ctype.h>
+//#include <ctype.h>
+#include <string>
 using namespace std;
 
 /**
@@ -36,15 +37,21 @@ public:
 	virtual void putPixel(int X, int Y, char znak);
 	virtual	void print(ofstream &);
         virtual void setColor(string &a);
+        
+        virtual char getPixel(int X, int Y){ return array[Y][X];};
+        virtual int  getColor(int X, int Y){return 0;};  
+        
         virtual ~devicePlot();
             
              char **array;///<2-D Canvas
              char Brush;///<brush for painting and filling
              char Pen;///<pen for line drawing
+             int Color;///<number of color
+             string tmp;
 	protected:
 		int maxX;///<Maximum value of the X axis(width of the Canvas)
 		int maxY;///<Maximum value of the Y axis(height of the Canvas)
-                int Color;///<number of color
+                
                 map <string, int> map_colors;///<palette for defining the set of available colors
 		
 	 	
