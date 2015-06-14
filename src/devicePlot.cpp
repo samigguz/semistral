@@ -30,9 +30,9 @@ void devicePlot::print(ofstream & fout)
 	  {
 	  for (int j=0;j<maxX;j++)
 	  {
-	  	fout<<array[i][j]<<"";
+	  	cout<<array[i][j]<<"";
 	  }
-	  fout<<endl;
+	  cout<<endl;
 	 }
     	
 }
@@ -62,7 +62,7 @@ devicePlot::devicePlot(int X,int Y):maxX(X),maxY(Y),Brush(' '),Pen('*')
 		}
 
   void devicePlot::putPixel(int X, int Y, char znak) {
-                    //cout << "b" << endl;
+    
 		  if (  X >=0 && X < maxX && Y>=0 && Y<maxY )
 		  { 
 		    array[Y][X]=znak;

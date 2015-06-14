@@ -5,7 +5,7 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <dbx_gdbdebugger version="1">
         <gdb_pathmaps>
@@ -27,8 +27,11 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/smiley </runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/pattern.guz</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/pattern_smiley</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/androidd</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  androidd</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"  examples/pattern.guz</runcommand>
+        <runcommand>"${OUTPUT_PATH}"  androidd</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

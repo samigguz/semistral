@@ -21,7 +21,6 @@
 
 using namespace std;
 
-//vychozi nastaveni Brush na mezeru a Pen na hvezdicku
 interpretator::interpretator():numberOfLine(0) {
     this->init_Lang();
     
@@ -43,7 +42,7 @@ interpretator::interpretator(string fNameIn, string fNameOut):numberOfLine(0) {
 }
 
 void interpretator::init_Lang(){
-    //lang["setSize"]=set_devicePlot;
+    
     lang["useBrush"]=&interpretator::set_Brush;
     lang["usePen"]=&interpretator::set_Pen;
     lang["setColor"]=&interpretator::set_setColor;
@@ -112,7 +111,7 @@ void interpretator::doIt() {
       getline(fin,s);
       numberOfLine++;
       line=s;
-      ///<del comments
+      //del comments
       size_t pos = s.find_first_of("//");
       if ( pos != string::npos) {
           s.erase(pos, s.size()-pos);
@@ -136,12 +135,12 @@ void interpretator::doIt() {
       }  else {
         
           if ( lang.find(tokens[0]) != lang.end() ) {
-            //если есть такой токен то вызываем ссответсвующую функцию
+            //if the token exists, call the appropriate function
             (this->*lang[tokens[0]])(hdc, tokens);  
               
           } else {
-            //если токен не известен вызываем ошибку  
-            throw CCoordException(line,numberOfLine," not defined");   
+            //if the token doesn't exist
+            throw CCoordException(line,numberOfLine,"not defined");   
           }
         
       } 
@@ -202,7 +201,7 @@ void interpretator::set_showPoliLine( devicePlot* hdc, vector<string> a)
     }    
     
    if ( this->poliPoints.size() == 1 )  {
-       //особый случай когда одна точка
+       //special case when only one point
        poliPoints[0].show( hdc );
    }
     
@@ -222,10 +221,9 @@ void interpretator::set_showPoliLine( devicePlot* hdc, vector<string> a)
 }
 
 void interpretator::set_poliLineAdd( devicePlot* hdc, vector<string> a)
-{ 
-    //cout << " poliadd " << poliPoints.size() << endl; 
+{  
     if ( a.size() != 6) {
-        throw CCoordException(line,numberOfLine," bad syntax");
+        throw CCoordException(line,numberOfLine);
     }    
     int x =  atoi( a[2].c_str());
     int y =  atoi( a[4].c_str());
@@ -290,7 +288,7 @@ void interpretator::set_clearPen( devicePlot* hdc, vector<string> a)
 void interpretator::set_Line( devicePlot* hdc, vector<string> a){
    
     if ( a.size() != 10) {
-        throw CCoordException(line,numberOfLine," bad syntax ");
+        throw CCoordException(line,numberOfLine);
     }    
     
     if (!isDigit(a[2]) || !isDigit(a[4]) ||!isDigit(a[6]) ||!isDigit(a[8])) throw CCoordException(line,numberOfLine," bad coordinates");
@@ -301,7 +299,6 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     
     check_Limits(x1,y1);
     check_Limits(x2,y2);
-    cout << "line " << hdc->tmp <<endl;
     Line l(x1,y1,x2,y2);
     
     l.show( hdc );
@@ -320,10 +317,7 @@ void interpretator::set_Point(devicePlot* hdc, vector<string> a)
     int y1 = atoi(a[4].c_str());
     
     check_Limits(x1,y1);
-    
-    
     plotPoint l( x1, y1);
-    
     l.show( hdc );
     
     
@@ -343,8 +337,7 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     
     check_Limits(x1,y1);
     check_Limits(x2,y2);
-    
-    cout << "ellipse " << hdc->tmp <<endl;
+  
     Ellipse l( x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill( hdc,hdc->Brush);
@@ -366,8 +359,6 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     check_Limits(x1,y1);
     check_Limits(x2,y2);
     
-    cout << "rectangle " << this->hdc->tmp <<endl;
-    
     Rectangle l(x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill(x1,y1,x2,y2,hdc);
@@ -377,7 +368,7 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
 
 
 void interpretator::set_beginPattern( devicePlot* hdc, vector<string> a){
-    //если повторно вызвали но не закрыли предыдущий то ругаемся
+    //if we recall "beginPattern" but have not closed the previous pattern
     if ( this->patternMode ) throw CCoordException(line,numberOfLine," active patternMode");
     
     if ( a.size() != 6) { 
@@ -392,31 +383,23 @@ void interpretator::set_beginPattern( devicePlot* hdc, vector<string> a){
   this->patternMaxX = x;
   this->patternMaxY = y;
   
-  //удаляем
+  //delete
   if ( this->patternHDC != NULL) delete this->patternHDC;
   
   this->hdc->tmp = "global";
-  //устанавливаем режим работы в патерне
+  //set the operation mode in patern
   this->patternMode = true;
-  //сохраняем контекст устройства
+  //keep the device context
   this->saveHDC =  this->hdc;
   
-  cout << hex << this->hdc << endl; 
-  //подменяем глобальный хдс на паттерн
+  //replace the global hdc to the pattern
   this->hdc = new deviceColorPlot(x,y);
   
-  cout << hex << this->hdc << endl; 
-  
-  cout << " 1 " << this->hdc->tmp << endl;
-   cout << " 2 " << this->saveHDC->tmp << endl;
-  
   this->hdc->tmp = "pattern";
-  // дублируем patternHDC
-  // в нем хранится патерн
+  // duplicate patternHDC
+  // it stores patern
   this->patternHDC = this->hdc; 
   
-  cout << " 1 " << this->hdc->tmp << endl;
-   cout << " 2 " << this->saveHDC->tmp << endl;
   
 }
 
@@ -428,11 +411,9 @@ void interpretator::set_endPattern( devicePlot* hdc, vector<string> a){
       throw CCoordException(line,numberOfLine);
    }  
   
-  // воостанавливаем старый
+  // restoring the old
   this->hdc = this->saveHDC;
-  
-  cout << " 1 " << this->hdc->tmp << endl;
-   cout << " 2 " << this->patternHDC->tmp << endl;
+ 
   
   this->patternMode = false;
 }
@@ -447,17 +428,14 @@ void interpretator::set_copyPattern( devicePlot* hdc, vector<string> a){
    
    if (!isDigit(a[2])||!isDigit(a[4])) throw CCoordException(line,numberOfLine);
    int x = atoi(a[2].c_str());
-   int y = atoi(a[4].c_str()); 
-   
-   //cout << " 1 " << hdc->tmp << endl;
-   //cout << " 2 " << patternHDC->tmp << endl;
+   int y = atoi(a[4].c_str());   
   
    for(int i=0; i < this->patternMaxY; i++) {
       for(int j=0; j < this->patternMaxX; j++) { 
-         //читаем из патерна 
+         //read from patern
           char point = this->patternHDC->getPixel(j,i);
           this->hdc->Color = this->patternHDC->getColor(j,i);
-          this->hdc->putPixel(x + j,y + i,point);
+          if (this->patternHDC->array[i][j]!=' ') hdc->putPixel(x + j,y + i,point);
        }
        
    }

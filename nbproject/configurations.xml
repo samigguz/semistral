@@ -59,8 +59,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>examples/Mikie_mouse</itemPath>
+    <itemPath>androidd</itemPath>
     <itemPath>examples/example2</itemPath>
-    <itemPath>examples/pattern.guz</itemPath>
+    <itemPath>examples/pattern_smiley</itemPath>
     <itemPath>examples/poliline.guz</itemPath>
     <itemPath>examples/smiley</itemPath>
   </logicalFolder>
@@ -74,11 +75,15 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="androidd" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="examples/pattern.guz" ex="false" tool="3" flavor2="0">
+      <item path="examples/pattern" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="examples/pattern_smiley" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
       </item>
@@ -151,11 +156,15 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="androidd" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="examples/pattern.guz" ex="false" tool="3" flavor2="0">
+      <item path="examples/pattern" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="examples/pattern_smiley" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
       </item>

@@ -14,6 +14,11 @@
 
 using namespace std;
 
+/**
+ * @brief Class splits the line into logical tokens.
+ * 
+ */
+
 class parser {
     
 private:
