@@ -301,7 +301,7 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     
     check_Limits(x1,y1);
     check_Limits(x2,y2);
-    cout << "line " << hdc->tmp <<endl;
+    
     Line l(x1,y1,x2,y2);
     
     l.show( hdc );
@@ -344,7 +344,7 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     check_Limits(x1,y1);
     check_Limits(x2,y2);
     
-    cout << "ellipse " << hdc->tmp <<endl;
+   
     Ellipse l( x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill( hdc,hdc->Brush);
@@ -366,7 +366,7 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     check_Limits(x1,y1);
     check_Limits(x2,y2);
     
-    cout << "rectangle " << this->hdc->tmp <<endl;
+  
     
     Rectangle l(x1,y1,x2,y2);
     
@@ -401,22 +401,17 @@ void interpretator::set_beginPattern( devicePlot* hdc, vector<string> a){
   //сохраняем контекст устройства
   this->saveHDC =  this->hdc;
   
-  cout << hex << this->hdc << endl; 
+ 
   //подменяем глобальный хдс на паттерн
   this->hdc = new deviceColorPlot(x,y);
   
-  cout << hex << this->hdc << endl; 
-  
-  cout << " 1 " << this->hdc->tmp << endl;
-   cout << " 2 " << this->saveHDC->tmp << endl;
   
   this->hdc->tmp = "pattern";
   // дублируем patternHDC
   // в нем хранится патерн
   this->patternHDC = this->hdc; 
   
-  cout << " 1 " << this->hdc->tmp << endl;
-   cout << " 2 " << this->saveHDC->tmp << endl;
+  
   
 }
 
@@ -430,9 +425,7 @@ void interpretator::set_endPattern( devicePlot* hdc, vector<string> a){
   
   // воостанавливаем старый
   this->hdc = this->saveHDC;
-  
-  cout << " 1 " << this->hdc->tmp << endl;
-   cout << " 2 " << this->patternHDC->tmp << endl;
+ 
   
   this->patternMode = false;
 }
