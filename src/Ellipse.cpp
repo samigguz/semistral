@@ -34,6 +34,7 @@ Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x
            swap(x2,y2);
            a= (x2-x1)/2; ///<  major axis
            b= (y2-y1)/2;///<  minor axis
+           swap( X, Y);
            
        }
        f = sqrt(fabs( a*a -b*b) );///< foci, linear eccentricity
@@ -89,7 +90,6 @@ void Ellipse::fill(devicePlot* hdc, char brush)
 	    double dx = r*cos( angle);
 	    double dy= r*sin( angle);
 	    
-            
             x= int((X-f)+dx+0.5);
             y=int(Y+dy+0.5);
             hdc->putPixel(steep ? y : x, steep ? x : y);
@@ -102,16 +102,19 @@ void Ellipse::fill(devicePlot* hdc, char brush)
             x=int( (X-f)+dx+0.5);
             y= int(Y-dy+0.5);
             hdc->putPixel(steep ? y : x, steep ? x : y);
-            
-	    /*hdc->putPixel( int( (X-f)+dx+0.5), int(Y+dy+0.5) );
-            hdc->putPixel( int( (X+f)-dx+0.5), int(Y+dy+0.5) );
-            hdc->putPixel( int( (X+f)-dx+0.5), int(Y-dy+0.5) );
-            hdc->putPixel( int( (X-f)+dx+0.5), int(Y-dy+0.5) );*/
+    
 	    
             hdc->Pen=brush;
-          
-            l.setCoordinates(int((X-f)+dx+0.5),int(Y+dy+0.5),int((X+f)-dx+0.5),int(Y+dy+0.5));
-            k.setCoordinates(int((X+f)-dx+0.5),int(Y-dy+0.5),int((X-f)+dx+0.5),int(Y-dy+0.5));
+            x=int((X-f)+dx+0.5);
+            y=int(Y+dy+0.5);
+            z=int((X+f)-dx+0.5);
+            u=int(Y+dy+0.5);
+            l.setCoordinates(steep ? y : x,steep ? x : y,steep ? u : z,steep ? z : u);
+            x=int((X+f)-dx+0.5);
+            y=int(Y-dy+0.5);
+            z=int((X-f)+dx+0.5);
+            u=int(Y-dy+0.5);
+            k.setCoordinates(steep ? y : x,steep ? x : y,steep ? u : z,steep ? z : u);
             l.show(hdc);
             k.show(hdc);
             hdc->Pen=ptr;

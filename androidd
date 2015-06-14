@@ -14,10 +14,10 @@
     Line(47,11,50,8)
     
   
-//hends
+//hands
    
-    Ellipse(7,24,19,39)
-    Ellipse(56,24,68,39)
+    Ellipse(9,24,19,41)
+    Ellipse(56,24,66,41)
     usePen('.')
     useBrush('$')
     Rectangle(20,24,55,45)
@@ -25,3 +25,6 @@
     Line(21,45,54,45)
     Line(22,46,53,46)
     Line(23,47,52,47)
+    
+    Ellipse(28,41,35,55)
+    Ellipse(42,41,48,55)
