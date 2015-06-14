@@ -177,7 +177,9 @@ void interpretator::set_size(int X,int Y)
 
 
 interpretator::~interpretator() {
-    delete hdc;
+    
+    if (hdc != NULL) delete hdc;
+    if (patternHDC != NULL) delete patternHDC;
 }
 
 
@@ -300,6 +302,7 @@ void interpretator::set_Line( devicePlot* hdc, vector<string> a){
     
     check_Limits(x1,y1);
     check_Limits(x2,y2);
+    
     Line l(x1,y1,x2,y2);
     
     l.show( hdc );
@@ -338,6 +341,8 @@ void interpretator::set_Ellipse(devicePlot* hdc, vector<string> a)
     
     check_Limits(x1,y1);
     check_Limits(x2,y2);
+    
+   
   
     Ellipse l( x1,y1,x2,y2);
     
@@ -360,6 +365,7 @@ void interpretator::set_Rectangle( devicePlot* hdc, vector<string> a){
     check_Limits(x1,y1);
     check_Limits(x2,y2);
     
+
     Rectangle l(x1,y1,x2,y2);
     
     if (hdc->Brush!=' ') l.fill(x1,y1,x2,y2,hdc);
@@ -393,14 +399,18 @@ void interpretator::set_beginPattern( devicePlot* hdc, vector<string> a){
   //keep the device context
   this->saveHDC =  this->hdc;
   
-  //replace the global hdc to the pattern
+
+  //подменяем глобальный хдс на паттерн
+
   this->hdc = new deviceColorPlot(x,y);
+
   
   this->hdc->tmp = "pattern";
   // duplicate patternHDC
   // it stores patern
   this->patternHDC = this->hdc; 
   
+
   
 }
 
