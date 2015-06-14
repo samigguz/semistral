@@ -81,8 +81,6 @@
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="examples/pattern" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="examples/pattern_smiley" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/poliline.guz" ex="false" tool="3" flavor2="0">
@@ -161,8 +159,6 @@
       <item path="examples/Mikie_mouse" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/example2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="examples/pattern" ex="false" tool="3" flavor2="0">
       </item>
       <item path="examples/pattern_smiley" ex="false" tool="3" flavor2="0">
       </item>

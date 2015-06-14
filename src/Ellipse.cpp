@@ -59,12 +59,7 @@ void Ellipse::show (devicePlot *hdc ){
 	    double r = p / (1 -e* cos(angle));
 	    double dx = r*cos( angle);
 	    double dy= r*sin( angle);
-            
-            if (steep)
-            {
-               // swap(X,Y);
-            }
-            
+    
             x= int((X-f)+dx+0.5);
             y=int(Y+dy+0.5);
             hdc->putPixel(steep ? y : x, steep ? x : y);
@@ -86,7 +81,7 @@ void Ellipse::show (devicePlot *hdc ){
 void Ellipse::fill(devicePlot* hdc, char brush)
 {
     double step=(2*M_PI/4)/STEP;
-    Line l,k;char ptr=hdc->Pen;  
+    Line l,k;char ptr=hdc->Pen;int x,y,z,u;  
     
 	 for (int i=0; i < STEP; i++ ) {
 	    double angle=step*i;
@@ -94,12 +89,27 @@ void Ellipse::fill(devicePlot* hdc, char brush)
 	    double dx = r*cos( angle);
 	    double dy= r*sin( angle);
 	    
-	    hdc->putPixel( int( (X-f)+dx+0.5), int(Y+dy+0.5) );
+            
+            x= int((X-f)+dx+0.5);
+            y=int(Y+dy+0.5);
+            hdc->putPixel(steep ? y : x, steep ? x : y);
+            x= int( (X+f)-dx+0.5);
+            y=int(Y+dy+0.5);
+            hdc->putPixel(steep ? y : x, steep ? x : y);
+            x=int( (X+f)-dx+0.5);
+            y= int(Y-dy+0.5);
+	    hdc->putPixel(steep ? y : x, steep ? x : y);
+            x=int( (X-f)+dx+0.5);
+            y= int(Y-dy+0.5);
+            hdc->putPixel(steep ? y : x, steep ? x : y);
+            
+	    /*hdc->putPixel( int( (X-f)+dx+0.5), int(Y+dy+0.5) );
             hdc->putPixel( int( (X+f)-dx+0.5), int(Y+dy+0.5) );
             hdc->putPixel( int( (X+f)-dx+0.5), int(Y-dy+0.5) );
-            hdc->putPixel( int( (X-f)+dx+0.5), int(Y-dy+0.5) );
+            hdc->putPixel( int( (X-f)+dx+0.5), int(Y-dy+0.5) );*/
 	    
             hdc->Pen=brush;
+          
             l.setCoordinates(int((X-f)+dx+0.5),int(Y+dy+0.5),int((X+f)-dx+0.5),int(Y+dy+0.5));
             k.setCoordinates(int((X+f)-dx+0.5),int(Y-dy+0.5),int((X-f)+dx+0.5),int(Y-dy+0.5));
             l.show(hdc);
