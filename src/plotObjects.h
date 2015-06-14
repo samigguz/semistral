@@ -19,7 +19,7 @@ class plotObjects {
 public:
     plotObjects();
     virtual void show( devicePlot *hdc ){};
-    
+    void  swap(int &a, int &b);
 private:
 
 };

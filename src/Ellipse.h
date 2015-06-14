@@ -39,6 +39,7 @@ protected:
  */  
      double f;///<foci, linear eccentricity
      double p;
+     bool steep;
      int STEP;
 public:
 /**

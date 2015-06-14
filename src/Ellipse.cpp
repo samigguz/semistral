@@ -23,10 +23,17 @@
  * \f$f^2 = \sqrt{(a)^2+(b)^2}\f$.
  */  
 
-Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x1(x1),y1(y1),x2(x2),y2(y2),STEP(200) {
+Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x1(x1),y1(y1),x2(x2),y2(y2),STEP(200),steep(false) {
        a= (x2-x1)/2; ///<  major axis
        b= (y2-y1)/2;///<  minor axis
      
+       steep =b>a;
+       if ( steep) 
+       {
+           swap(x1,y1);
+           swap(x2,y2);
+           
+       }
        f = sqrt(fabs( a*a -b*b) );///< foci, linear eccentricity
        e =  f / a;
        p=a-f*e;///<parametr of the ellipse
@@ -44,16 +51,30 @@ Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x
       
 void Ellipse::show (devicePlot *hdc ){
      double step=(2*M_PI/4)/STEP;
-	  
+     int x,y;
 	 for (int i=0; i < STEP; i++ ) {
 	    double angle=step*i;
 	    double r = p / (1 -e* cos(angle));
 	    double dx = r*cos( angle);
 	    double dy= r*sin( angle);
-	    hdc->putPixel( int( (X-f)+dx+0.5), int(Y+dy+0.5) );
-            hdc->putPixel( int( (X+f)-dx+0.5), int(Y+dy+0.5) );
-            hdc->putPixel( int( (X+f)-dx+0.5), int(Y-dy+0.5) );
-            hdc->putPixel( int( (X-f)+dx+0.5), int(Y-dy+0.5) );
+            
+            if (steep)
+            {
+                swap(X,Y);
+            }
+            
+            x= int((X-f)+dx+0.5);
+            y=int(Y+dy+0.5);
+            hdc->putPixel(steep ? y : x, steep ? x : y);
+            x= int( (X+f)-dx+0.5);
+            y=int(Y+dy+0.5);
+            hdc->putPixel(steep ? y : x, steep ? x : y);
+            x=int( (X+f)-dx+0.5);
+            y= int(Y-dy+0.5);
+	    hdc->putPixel(steep ? y : x, steep ? x : y);
+            x=int( (X-f)+dx+0.5);
+            y= int(Y-dy+0.5);
+            hdc->putPixel(steep ? y : x, steep ? x : y);
 	    
 	  }
        

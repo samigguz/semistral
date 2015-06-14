@@ -7,7 +7,7 @@
  */
 
 #include "Line.h"
-
+#include "plotObjects.h"
 void Line::show(devicePlot *hdc )
  {   
     bool steep =abs(y - Y) > abs(x - X); 
@@ -39,11 +39,7 @@ void Line::show(devicePlot *hdc )
  }
 
 
-void  Line::swap(int &a, int &b) {
-    	int tmp = a;
-    	a = b;
-    	b = tmp;
-    }
+
 
 
    void Line::setCoordinates (int x1,int y1, int x2,int y2 ) {

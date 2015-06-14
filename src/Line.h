@@ -47,7 +47,6 @@ class Line : public plotPoint {
 */
     Line(int x1,int y1, int x2,int y2 );
     void setCoordinates (int x1,int y1, int x2,int y2 );
-    void  swap(int &a, int &b);
 /**
 *   @brief Virtual function that displays the line on the 2D-Canvas.
 *   
