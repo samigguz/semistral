@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+CCoordException::CCoordException(){};
 CCoordException::CCoordException (const string & a)
 {
     cout<<a<<endl;

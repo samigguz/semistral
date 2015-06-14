@@ -32,6 +32,8 @@ Ellipse::Ellipse(int x1,int y1, int x2,int y2 ):plotPoint((x2+x1)/2,(y2+y1)/2),x
        {
            swap(x1,y1);
            swap(x2,y2);
+           a= (x2-x1)/2; ///<  major axis
+           b= (y2-y1)/2;///<  minor axis
            
        }
        f = sqrt(fabs( a*a -b*b) );///< foci, linear eccentricity
@@ -60,7 +62,7 @@ void Ellipse::show (devicePlot *hdc ){
             
             if (steep)
             {
-                swap(X,Y);
+               // swap(X,Y);
             }
             
             x= int((X-f)+dx+0.5);
