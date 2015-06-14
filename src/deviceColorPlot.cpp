@@ -7,6 +7,7 @@
  */
 
 #include "deviceColorPlot.h"
+#include "CCoordException.h"
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
@@ -46,7 +47,8 @@ void deviceColorPlot::print(ofstream & fout)
 	  for (int j=0;j<maxX;j++)
 	  {
                 int c = colors[i * maxX+j];
-                if ( c >=0 && c < 8) cout<< col[c];
+                if ( c >=0 && c < 8) fout<< col[c];
+                else throw CCoordException("Undefined color");
 	  	fout<<array[i][j]<<"";
 	  }
 	  fout<<endl;

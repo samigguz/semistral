@@ -126,7 +126,6 @@ void interpretator::doIt() {
       
       
     }
-    
     hdc->print(fout);
     
     fout.close();
@@ -241,7 +240,7 @@ void interpretator::set_setColor( devicePlot* hdc, vector<string> a)
         throw CCoordException(line,numberOfLine);
     }    
     if (a.size()==6 && (a[2]!="\"" || a[4]!="\""))  throw CCoordException(line,numberOfLine);
-    if (a.size()==4 && a[2].size()>1) throw CCoordException(line,numberOfLine);
+    if (a.size()==4 && a[2].size()>1) throw CCoordException(line,numberOfLine,"Undefined color");
     if (a.size()==4) hdc->setColor( a[2]);
     else hdc->setColor( a[3]);
 }

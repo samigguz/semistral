@@ -11,7 +11,7 @@ setSize(50,50)  // size
     Ellipse(10,4,34,22)
     
     usePen('~')
-    setColor(0)
+    setColor(9)
     Ellipse(16,8,21,12)
     Ellipse(24,8,29,12)
     usePen('@')
