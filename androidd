@@ -1,6 +1,17 @@
     
-    setSize(100,100)
+    setSize(100,50)
+    
     useBrush('$')
     Ellipse(20,10,55,35)
+    usePen('.')
+//eyes
+    Ellipse(29,16,31,19)
+    Ellipse(43,16,45,19)
+    clearPen
     Line(24,8,27,11)
     Line(47,11,50,8)
+  
+//hends
+   
+    Ellipse(9,23,18,35)
+   // Ellipse(20,10,55,35)

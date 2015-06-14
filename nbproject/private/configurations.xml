@@ -29,6 +29,7 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/pattern.guz</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/pattern_smiley</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/androidd</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"  examples/poliline.guz</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}"  androidd</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>"${OUTPUT_PATH}"  androidd</runcommand>

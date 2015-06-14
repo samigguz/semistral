@@ -27,7 +27,7 @@ class deviceColorPlot: public devicePlot {
 public:
     deviceColorPlot();
     deviceColorPlot(int X,int Y);
-    
+    ~deviceColorPlot();
     void print(ofstream &);
     void putPixel(int X, int Y);
     void putPixel(int X, int Y, char );

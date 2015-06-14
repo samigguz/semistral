@@ -75,7 +75,7 @@ devicePlot::devicePlot(int X,int Y):maxX(X),maxY(Y),Brush(' '),Pen('*')
   devicePlot::~devicePlot()
   {
       
-      for (int i=0;i<maxY;i++)
+      for (int i=0;i<=maxY;i++)
       {
           delete [] array[i];
       }

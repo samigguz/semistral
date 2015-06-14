@@ -177,6 +177,7 @@ void interpretator::set_size(int X,int Y)
 
 
 interpretator::~interpretator() {
+    delete hdc;
 }
 
 

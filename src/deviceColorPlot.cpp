@@ -69,3 +69,7 @@ void deviceColorPlot::putPixel(int X, int Y, char znak) {
  
  int  deviceColorPlot::getColor(int X, int Y) { return colors[Y * maxX + X]; }
  
+deviceColorPlot::~deviceColorPlot()
+{
+    delete [] colors ;
+}
