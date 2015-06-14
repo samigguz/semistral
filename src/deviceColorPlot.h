@@ -34,6 +34,7 @@ public:
     
     
      int getColor(int X, int Y);
+     ~deviceColorPlot();
     
 protected:
    string default_console;

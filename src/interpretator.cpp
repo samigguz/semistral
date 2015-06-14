@@ -178,6 +178,9 @@ void interpretator::set_size(int X,int Y)
 
 
 interpretator::~interpretator() {
+    
+    if (hdc != NULL) delete hdc;
+    if (patternHDC != NULL) delete patternHDC;
 }
 
 
